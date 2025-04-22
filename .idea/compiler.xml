@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="exposed-workshop" target="21" />
+      <module name="exposed-workshop.bluetape4k-timefold" target="21" />
+      <module name="exposed-workshop.bluetape4k-timefold.main" target="21" />
+      <module name="exposed-workshop.bluetape4k-timefold.test" target="21" />
+      <module name="exposed-workshop.buildSrc" target="21" />
+      <module name="exposed-workshop.buildSrc.main" target="21" />
+      <module name="exposed-workshop.buildSrc.test" target="21" />
+      <module name="exposed-workshop.main" target="21" />
+      <module name="exposed-workshop.test" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

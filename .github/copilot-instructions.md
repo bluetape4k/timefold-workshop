@@ -10,6 +10,7 @@
 - Spring Boot 를 사용한다
 - Kotlin Exposed 를 사용한다
 - 예제는 간결하지만 실제 프로덕션에 사용 가능한 수준으로 작성한다
-- 코드에 Kotlin Doc 형식의 한국어로 주석을 작성한다
+- 주석은 모두 한국어로 작성한다
+- 주석은 KDoc 형식으로 작성한다
 - 커밋 메시지는 한국어로 작성한다
 - 커밋 메시지는 머릿말을 둔다 (예: feat, fix, docs, style, refactor, perf, test, chore)

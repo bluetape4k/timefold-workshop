@@ -2,6 +2,13 @@ package io.bluetape4k.timefold.dsl
 
 import kotlin.reflect.KClass
 
+/**
+ * DSL for defining a solver factory.
+ *
+ * @param T the type of the planning solution
+ * @property planningSolutionClass the class of the planning solution
+ * @property constraints the list of constraint definitions
+ */
 class SolverFactoryDsl<T: Any>(
     val planningSolutionClass: KClass<T>,
     val constraints: List<ConstraintDefinition>,
@@ -13,6 +20,13 @@ class SolverFactoryDsl<T: Any>(
     }
 }
 
+/**
+ * DSL function to create a [SolverFactoryDsl] for a given class.
+ *
+ * @param T the type of the planning solution
+ * @param constraints the list of constraint definitions
+ * @return a [SolverFactoryDsl] for the specified class
+ */
 inline fun <reified T: Any> solverFactory(
     constraints: List<ConstraintDefinition>,
 ): SolverFactoryDsl<T> =

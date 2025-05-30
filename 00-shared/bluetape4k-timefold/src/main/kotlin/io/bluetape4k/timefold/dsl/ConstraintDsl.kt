@@ -1,5 +1,7 @@
 package io.bluetape4k.timefold.dsl
 
+import java.io.Serializable
+
 /**
  * 제약 조건들을 정의하는 DSL입니다.
  *
@@ -9,7 +11,7 @@ data class ConstraintDefinition(
     val name: String,
     val isHard: Boolean,
     val block: () -> Unit = {},  // 실제 ContraintFactory를 이용한 정의는 별도 모듈에서 처리
-)
+): Serializable
 
 /**
  * 제약 조건들을 정의하는 DSL입니다.

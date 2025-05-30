@@ -6,16 +6,18 @@ import kotlin.reflect.KClass
  * DSL for defining a solver factory.
  *
  * @param T the type of the planning solution
- * @property planningSolutionClass the class of the planning solution
+ * @property planningSolutionClazz the class of the planning solution
  * @property constraints the list of constraint definitions
  */
 class SolverFactoryDsl<T: Any>(
-    val planningSolutionClass: KClass<T>,
+    val planningSolutionClazz: KClass<T>,
     val constraints: List<ConstraintDefinition>,
 ) {
     fun build(): String {
-        println("🧩 SolverFactory created for: ${planningSolutionClass.simpleName}")
-        constraints.forEach { println("→ constraint: ${it.name} (${if (it.isHard) "HARD" else "SOFT"})") }
+        println("🧩 SolverFactory created for: ${planningSolutionClazz.simpleName}")
+        constraints.forEach {
+            println("→ constraint: ${it.name} (${if (it.isHard) "HARD" else "SOFT"})")
+        }
         return "MockSolverFactoryInstance"
     }
 }

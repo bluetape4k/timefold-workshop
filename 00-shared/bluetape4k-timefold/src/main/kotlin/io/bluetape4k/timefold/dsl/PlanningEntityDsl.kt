@@ -10,11 +10,11 @@ import kotlin.reflect.KProperty1
  * 플래닝 엔티티는 플래닝 문제에서 스케줄링 또는 할당되는 객체입니다.
  *
  * @param T 플래닝 엔티티의 타입
- * @property clazz 플래닝 엔티티의 클래스
+ * @property kclazz 플래닝 엔티티의 클래스
  * @property variables 플래닝 엔티티의 변수 리스트입니다.
  */
 data class PlanningEntityDefinition<T: Any>(
-    val clazz: KClass<T>,
+    val kclazz: KClass<T>,
     val variables: List<KProperty1<T, *>>,
 ): Serializable
 
@@ -22,9 +22,9 @@ data class PlanningEntityDefinition<T: Any>(
  * 플래닝 엔티티를 구성하기 위한 DSL입니다.
  *
  * @param T 플래닝 엔티티의 타입
- * @property clazz 플래닝 엔티티의 클래스
+ * @property kclazz 플래닝 엔티티의 클래스
  */
-class PlanningEntityBuilder<T: Any>(val clazz: KClass<T>) {
+class PlanningEntityBuilder<T: Any>(val kclazz: KClass<T>) {
     private val variables = mutableListOf<KProperty1<T, *>>()
 
     fun planningVariable(prop: KProperty1<T, *>) {
@@ -32,7 +32,7 @@ class PlanningEntityBuilder<T: Any>(val clazz: KClass<T>) {
     }
 
     fun build(): PlanningEntityDefinition<T> =
-        PlanningEntityDefinition(clazz, variables)
+        PlanningEntityDefinition(kclazz, variables)
 }
 
 /**

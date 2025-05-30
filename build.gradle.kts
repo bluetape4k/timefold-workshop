@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     base
-    `maven-publish`
     // jacoco
     kotlin("jvm") version Versions.kotlin
 
@@ -27,8 +26,10 @@ plugins {
     id(Plugins.testLogger) version Plugins.Versions.testLogger
     id(Plugins.shadow) version Plugins.Versions.shadow apply false
 
+    id(Plugins.graalvm_native) version Plugins.Versions.graalvm_native apply false
+
     // for JMolecules
-    id("net.bytebuddy.byte-buddy-gradle-plugin") version "1.15.10" apply false
+    id("net.bytebuddy.byte-buddy-gradle-plugin") version "1.17.5" apply false
 }
 
 // NOTE: Github 에 등록된 Package 를 다운받기 위해서 사용합니다.
@@ -544,6 +545,9 @@ subprojects {
         // Property baesd test
         testImplementation(Libs.datafaker)
         testImplementation(Libs.random_beans)
+
+        // Byte Buddy
+        implementation(Libs.byte_buddy_agent)
     }
 
     tasks.withType<Jar> {

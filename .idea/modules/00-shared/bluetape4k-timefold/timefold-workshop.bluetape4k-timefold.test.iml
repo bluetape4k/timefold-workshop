@@ -6,4 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../../00-shared/bluetape4k-timefold/src/test/resources" type="java-test-resource" />
     </content>
   </component>
+  <component name="CheckStyle-IDEA-Module" serialisationVersion="2">
+    <option name="activeLocationsIds" />
+  </component>
 </module>

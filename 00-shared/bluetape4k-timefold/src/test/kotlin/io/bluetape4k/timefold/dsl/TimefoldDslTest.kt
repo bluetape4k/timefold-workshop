@@ -1,6 +1,6 @@
 package io.bluetape4k.timefold.dsl
 
-import io.bluetape4k.logging.KLogging
+import io.bluetape4k.logging.coroutines.KLoggingChannel
 import io.bluetape4k.timefold.AbstractTimefoldTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldContain
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 class TimefoldDslTest: AbstractTimefoldTest() {
 
-    companion object: KLogging()
+    companion object: KLoggingChannel()
 
     data class Task(
         val id: Long,
@@ -25,18 +25,22 @@ class TimefoldDslTest: AbstractTimefoldTest() {
             planningVariable(Task::assignedTo)
         }
         val constraints = constraintSet {
-            constraint("No duplicate assignment") {
-                println("\uD83D\uDD27  Hard Constraint evaluated")
+            constraint("💫No duplicate assignment 🙌") {
+                println("\uD83D\uDD27 Hard Constraint evaluated.")
             }
-            constraint("Balance workload", isHard = false) {
+            constraint("🍦Balance workload", isHard = false) {
                 println("✨ Soft Constraint evaluated")
             }
         }
 
-        entity.clazz shouldBeEqualTo Task::class
+        entity.kclazz shouldBeEqualTo Task::class
         entity.variables shouldHaveSize 1
 
-        constraints.first().name shouldBeEqualTo "No duplicate assignment"
+        constraints shouldHaveSize 2
+        constraints[0].name shouldBeEqualTo "💫No duplicate assignment 🙌"
+        constraints[1].name shouldBeEqualTo "🍦Balance workload"
+
+        val factory = solverFactory<Task>(constraints).build()
     }
 
     @Test

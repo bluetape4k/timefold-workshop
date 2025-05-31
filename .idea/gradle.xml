@@ -21,6 +21,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/00-shared/bluetape4k-timefold" />
+            <option value="$PROJECT_DIR$/01-quickstarts/school-timetabling" />
             <option value="$PROJECT_DIR$/buildSrc" />
           </set>
         </option>

@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/00-shared/bluetape4k-timefold/timefold-workshop.bluetape4k-timefold.main.iml" filepath="$PROJECT_DIR$/.idea/modules/00-shared/bluetape4k-timefold/timefold-workshop.bluetape4k-timefold.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/00-shared/bluetape4k-timefold/timefold-workshop.bluetape4k-timefold.test.iml" filepath="$PROJECT_DIR$/.idea/modules/00-shared/bluetape4k-timefold/timefold-workshop.bluetape4k-timefold.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/01-quickstarts/school-timetabling/timefold-workshop.school-timetabling.main.iml" filepath="$PROJECT_DIR$/.idea/modules/01-quickstarts/school-timetabling/timefold-workshop.school-timetabling.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/01-quickstarts/school-timetabling/timefold-workshop.school-timetabling.test.iml" filepath="$PROJECT_DIR$/.idea/modules/01-quickstarts/school-timetabling/timefold-workshop.school-timetabling.test.iml" />
     </modules>
   </component>
 </project>

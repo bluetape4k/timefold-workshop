@@ -24,7 +24,7 @@ object Plugins {
         const val docker_compose = "0.17.12"  // https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
 
         // 참고: https://docs.gatling.io/reference/integrations/build-tools/gradle-plugin/
-        const val gatling = "3.14.1"  // https://plugins.gradle.org/plugin/io.gatling.gradle
+        const val gatling = "3.14.3"  // https://plugins.gradle.org/plugin/io.gatling.gradle
 
         const val graalvm_native = "0.10.6" // https://mvnrepository.com/artifact/org.graalvm.buildtools.native/org.graalvm.buildtools.native.gradle.plugin
     }
@@ -198,18 +198,18 @@ object Versions {
 
     const val ow2_asm = "9.8"               // https://mvnrepository.com/artifact/org.ow2.asm/asm
 
-    const val junit_jupiter = "5.12.2"      // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
-    const val junit_platform = "1.12.2"     // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
+    const val junit_jupiter = "5.13.0"      // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    const val junit_platform = "1.13.0"     // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
     const val assertj_core = "3.27.3"       // https://mvnrepository.com/artifact/org.assertj/assertj-core
     const val kluent = "1.73"               // https://mvnrepository.com/artifact/org.amshove.kluent/kluent
-    const val mockk = "1.13.17"             // https://mvnrepository.com/artifact/io.mockk/mockk
+    const val mockk = "1.14.2"             // https://mvnrepository.com/artifact/io.mockk/mockk
     const val springmockk = "4.0.2"         // https://mvnrepository.com/artifact/com.ninja-squad/springmockk
     const val awaitility = "4.3.0"          // https://mvnrepository.com/artifact/org.awaitility/awaitility
     const val jmh = "1.37"                  // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core
     const val testcontainers = "1.21.0"     // https://mvnrepository.com/artifact/org.testcontainers/testcontainers
     const val jna = "5.17.0"                // https://mvnrepository.com/artifact/net.java.dev.jna/jna
     const val archunit = "1.4.0"           // https://mvnrepository.com/artifact/com.tngtech.archunit/archunit-junit5
-    const val rest_assured = "5.5.1"        // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    const val rest_assured = "5.5.5"        // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
 
     const val datafaker = "2.4.3"          // https://mvnrepository.com/artifact/net.datafaker/datafaker
     const val snakeyaml = "2.4"            // https://mvnrepository.com/artifact/org.yaml/snakeyaml
@@ -222,7 +222,7 @@ object Versions {
     const val scrimage = "4.3.1"  // https://mvnrepository.com/artifact/com.sksamuel.scrimage/scrimage-core
 
     // Gatling
-    const val gatling = "3.13.5" // https://mvnrepository.com/artifact/io.gatling/gatling-core
+    const val gatling = "3.14.3" // https://mvnrepository.com/artifact/io.gatling/gatling-core
 }
 
 object Libs {

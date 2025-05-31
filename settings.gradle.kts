@@ -15,6 +15,7 @@ val PROJECT_NAME = "timefold"
 rootProject.name = "$PROJECT_NAME-workshop"
 
 includeModules("00-shared", withProjectName = false, withBaseDir = false)
+includeModules("01-quickstarts", withProjectName = false, withBaseDir = false)
 
 fun includeModules(baseDir: String, withProjectName: Boolean = true, withBaseDir: Boolean = true) {
     files("$rootDir/$baseDir").files

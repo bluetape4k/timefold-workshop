@@ -1,21 +1,22 @@
-= School Timetabling (Java, Spring Boot, Maven or Gradle)
+= School Timetabling (Kotlin, Quarkus, Maven)
 
 Assign lessons to timeslots and rooms to produce a better schedule for teachers and students.
 
 image::./school-timetabling-screenshot.png[]
 
 * <<run,Run the application>>
-* <<enterprise,Run the application with Timefold Solver Enterprise Edition>>
 * <<package,Run the packaged application>>
-* <<native,Create a native image>>
+* <<container,Run the application in a container>>
+* <<native,Run it native>>
 
 == Prerequisites
 
-. Install Java and Maven, for example with https://sdkman.io[Sdkman]:
+. Install JDK, Maven and Kotlin, for example with https://sdkman.io[Sdkman]:
 +
 ----
 $ sdk install java
 $ sdk install maven
+$ sdk install kotlin
 ----
 
 [[run]]
@@ -27,26 +28,26 @@ $ sdk install maven
 ----
 $ git clone https://github.com/TimefoldAI/timefold-quickstarts.git
 ...
-$ cd timefold-quickstarts/java/spring-boot-integration
+$ cd timefold-quickstarts/kotlin/school-timetabling
 ----
 
 . Start the application with Maven:
 +
 [source,shell]
 ----
-$ mvn spring-boot:run
-----
-+
-or with Gradle:
-+
-[source,shell]
-----
-$ gradle bootRun
+$ mvn quarkus:dev
 ----
 
 . Visit http://localhost:8080 in your browser.
 
 . Click on the *Solve* button.
+
+Then try _live coding_:
+
+. Make some changes in the source code.
+. Refresh your browser (F5).
+
+Notice that those changes are immediately in effect.
 
 [[enterprise]]
 == Run the application with Timefold Solver Enterprise Edition
@@ -54,15 +55,9 @@ $ gradle bootRun
 For high-scalability use cases, switch to https://docs.timefold.ai/timefold-solver/latest/enterprise-edition/enterprise-edition[Timefold Solver Enterprise Edition], our commercial offering.
 https://timefold.ai/contact[Contact Timefold] to obtain the credentials required to access our private Enterprise Maven repository.
 
-. Configure the Enterprise Edition Maven repository:
-+
-[tabs]
-====
-Maven::
+. Create `.m2/settings.xml` in your home directory with the following content:
 +
 --
-Create `.m2/settings.xml` in your home directory with the following content:
-
 [source,xml,options="nowrap"]
 ----
 <settings>
@@ -81,160 +76,97 @@ Create `.m2/settings.xml` in your home directory with the following content:
 
 See https://maven.apache.org/settings.html[Settings Reference] for more information on Maven settings.
 --
-Gradle::
-+
---
-Add the following in your `build.gradle`:
-
-[source,groovy,options="nowrap"]
-----
-repositories {
-  mavenCentral()
-  maven {
-    url "https://timefold.jfrog.io/artifactory/releases/"
-    credentials { // Replace "my_username" and "my_password" with credentials obtained from a Timefold representative.
-        username "my_username"
-        password "my_password"
-    }
-    authentication {
-        basic(BasicAuthentication)
-    }
-  }
-}
-----
-
-See https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.repositories.AuthenticationSupported.html#content[Settings Reference] for more information on Gradle settings.
---
-====
 
 . Start the application with Maven:
 +
 [source,shell]
 ----
-$ mvn spring-boot:run -Denterprise
-----
-+
-or with Gradle:
-+
-[source,shell]
-----
-$ gradle bootRun -Denterprise=true
+$ mvn clean quarkus:dev -Denterprise
 ----
 
 . Visit http://localhost:8080 in your browser.
 
 . Click on the *Solve* button.
 
+Then try _live coding_:
+
+. Make some changes in the source code.
+. Refresh your browser (F5).
+
+Notice that those changes are immediately in effect.
+
 [[package]]
 == Run the packaged application
 
-When you're ready to deploy the application, package the project to run as a conventional jar file.
+When you're done iterating in `quarkus:dev` mode, package the application to run as a conventional jar file.
 
-. Build it with Maven:
+. Compile it with Maven:
 +
 [source,shell]
 ----
 $ mvn package
 ----
-+
-or with Gradle:
-+
-[source,shell]
-----
-$ gradle clean build
-----
 
-. Run the Maven output:
+. Run it:
 +
 [source,shell]
 ----
-$ java -jar target/spring-boot-school-timetabling-1.0-SNAPSHOT.jar
-----
-+
-or the Gradle output:
-+
-[source,shell]
-----
-$ java -jar build/libs/spring-boot-school-timetabling-1.0-SNAPSHOT.jar
+$ java -jar ./target/quarkus-app/quarkus-run.jar
 ----
 +
 [NOTE]
 ====
-To run it on port 8081 instead, add `-Dserver.port=8081`.
+Even though it's written in Kotlin, it can run with the `java` command.
+====
++
+[NOTE]
+====
+To run it on port 8081 instead, add `-Dquarkus.http.port=8081`.
 ====
 
 . Visit http://localhost:8080 in your browser.
 
 . Click on the *Solve* button.
+
+[[container]]
+== Run the application in a container
+
+. Build a container image:
++
+[source,shell]
+----
+$ mvn package -Dcontainer
+----
+
+The container image name
+. Run a container:
++
+[source,shell]
+----
+$ docker run -p 8080:8080 --rm $USER/kotlin-school-timetabling:1.0-SNAPSHOT
+----
 
 [[native]]
-== Create a native image
+== Run it native
 
-IMPORTANT: The solver runs considerably slower in a native image.
+To increase startup performance for serverless deployments, build the application as a native executable:
 
-If you want faster startup times or need to deploy to an environment without a JVM, you can build a native image.
+. https://quarkus.io/guides/building-native-image#configuring-graalvm[Install GraalVM and gu install the native-image tool]
 
-=== Build using Docker
-
-. Build a Docker image with Maven:
+. Compile it natively.
+This takes a few minutes:
 +
 [source,shell]
 ----
-$ mvn -Pnative spring-boot:build-image
-----
-+
-or with Gradle:
-+
-[source,shell]
-----
-$ gradle bootBuildImage
-----
-+
-. Start the built Docker image using `docker run`:
-+
-[source,shell]
-----
-$ docker run --rm -p 8080:8080 docker.io/library/spring-boot-school-timetabling:1.0-SNAPSHOT
-----
-+
-. Visit http://localhost:8080 in your browser.
-
-. Click on the *Solve* button.
-
-=== Build using locally installed GraalVM
-
-. Build it with Maven:
-+
-[source,shell]
-----
-$ mvn -Pnative native:compile
-----
-+
-or with Gradle:
-+
-[source,shell]
-----
-$ gradle nativeCompile
+$ mvn package -Dnative -DskipTests
 ----
 
-. Run the Maven output:
+. Run the native executable:
 +
 [source,shell]
 ----
-$ ./target/spring-boot-school-timetabling
+$ ./target/*-runner
 ----
-+
-or the Gradle output:
-+
-[source,shell]
-----
-$ ./build/native/nativeCompile/java-spring-boot
-----
-+
-[NOTE]
-====
-To run it on port 8081 instead, add `-Dserver.port=8081`.
-====
 
 . Visit http://localhost:8080 in your browser.
 

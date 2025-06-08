@@ -7,6 +7,7 @@ import ai.timefold.solver.core.api.domain.solution.ProblemFactCollectionProperty
 import ai.timefold.solver.core.api.domain.valuerange.ValueRangeProvider
 import ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore
 import ai.timefold.solver.core.api.solver.SolverStatus
+import io.bluetape4k.ToStringBuilder
 import java.io.Serializable
 
 @PlanningSolution
@@ -33,5 +34,9 @@ data class Timetable(
     constructor(name: String, score: HardSoftScore?, solverStatus: SolverStatus)
             : this(name, emptyList(), emptyList(), emptyList(), score, solverStatus)
 
-    override fun toString(): String = name
+    override fun toString(): String = ToStringBuilder(this)
+        .add("name", name)
+        .add("score", score)
+        .add("solverStatus", solverStatus)
+        .toString()
 }

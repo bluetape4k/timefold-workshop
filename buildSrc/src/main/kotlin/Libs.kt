@@ -66,7 +66,7 @@ object Plugins {
 object Versions {
 
     // Java 21, Kotlin 2.0 이상에서 사용하세요
-    const val bluetape4k = "0.0.9"      // Bluetape4k Github Package 로 배포됩니다.
+    const val bluetape4k = "0.0.10-SNAPSHOT"      // Bluetape4k Github Package 로 배포됩니다.
 
     const val timefold_solver = "1.22.1" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
 
@@ -330,13 +330,13 @@ object Libs {
     val bluetape4k_geocode = bluetape4k("geocode")
     val bluetape4k_geohash = bluetape4k("geohash")
     val bluetape4k_geoip2 = bluetape4k("geoip2")
+    val bluetape4k_javatimes = bluetape4k("javatimes")
     val bluetape4k_idgenerators = bluetape4k("idgenerators")
     val bluetape4k_images = bluetape4k("images")
     val bluetape4k_jwt = bluetape4k("jwt")
     val bluetape4k_math = bluetape4k("math")
     val bluetape4k_mutiny = bluetape4k("mutiny")
     val bluetape4k_money = bluetape4k("money")
-    val bluetape4k_times = bluetape4k("times")
     val bluetape4k_units = bluetape4k("unit")
 
     // VERTX
@@ -1425,11 +1425,11 @@ object Libs {
     // MyBatis 테스트 시에 h2 v2 를 사용한다
     const val h2_v2 = "com.h2database:h2:2.3.232"    // https://mvnrepository.com/artifact/com.h2database/h2
     const val hsqldb = "org.hsqldb:hsqldb:2.7.4"     // https://mvnrepository.com/artifact/org.hsqldb/hsqldb
-    const val flyway_core = "org.flywaydb:flyway-core:11.4.1"  // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    const val flyway_core = "org.flywaydb:flyway-core:11.8.2"  // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
 
     // UUID Generator
     const val java_uuid_generator = "com.fasterxml.uuid:java-uuid-generator:5.1.0"   // https://mvnrepository.com/artifact/com.fasterxml.uuid/java-uuid-generator
-    const val uuid_creator = "com.github.f4b6a3:uuid-creator:5.3.2"
+    const val uuid_creator = "com.github.f4b6a3:uuid-creator:6.1.1"  // https://mvnrepository.com/artifact/com.github.f4b6a3/uuid-creator
 
     // Cache2K
     fun cache2k(module: String, version: String = Versions.cache2k) = "org.cache2k:cache2k-$module:$version"

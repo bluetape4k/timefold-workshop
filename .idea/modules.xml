@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/01-quickstarts/bed-allocation/timefold-workshop.bed-allocation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/01-quickstarts/bed-allocation/timefold-workshop.bed-allocation.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/01-quickstarts/bed-allocation/timefold-workshop.bed-allocation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/01-quickstarts/bed-allocation/timefold-workshop.bed-allocation.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/00-shared/bluetape4k-timefold/timefold-workshop.bluetape4k-timefold.main.iml" filepath="$PROJECT_DIR$/.idea/modules/00-shared/bluetape4k-timefold/timefold-workshop.bluetape4k-timefold.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/00-shared/bluetape4k-timefold/timefold-workshop.bluetape4k-timefold.test.iml" filepath="$PROJECT_DIR$/.idea/modules/00-shared/bluetape4k-timefold/timefold-workshop.bluetape4k-timefold.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/01-quickstarts/school-timetabling/timefold-workshop.school-timetabling.main.iml" filepath="$PROJECT_DIR$/.idea/modules/01-quickstarts/school-timetabling/timefold-workshop.school-timetabling.main.iml" />

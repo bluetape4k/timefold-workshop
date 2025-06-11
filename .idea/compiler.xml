@@ -9,10 +9,11 @@
           <entry name="/Volumes/SS980/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure-processor/3.5.0/6b9a371eddbdd69989196eb668648da4a30496bc/spring-boot-autoconfigure-processor-3.5.0.jar" />
           <entry name="/Volumes/SS980/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.5.0/571cee41914166d639c56eac7d80fb35e8201325/spring-boot-configuration-processor-3.5.0.jar" />
         </processorPath>
+        <module name="timefold-workshop.bed-allocation.main" />
         <module name="timefold-workshop.school-timetabling.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="17">
+    <bytecodeTargetLevel target="21">
       <module name="exposed-workshop" target="21" />
       <module name="exposed-workshop.bluetape4k-timefold" target="21" />
       <module name="exposed-workshop.bluetape4k-timefold.main" target="21" />
@@ -26,6 +27,11 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="timefold-workshop.bed-allocation" options="-parameters" />
+      <module name="timefold-workshop.bed-allocation.aot" options="-parameters" />
+      <module name="timefold-workshop.bed-allocation.aotTest" options="-parameters" />
+      <module name="timefold-workshop.bed-allocation.main" options="-parameters" />
+      <module name="timefold-workshop.bed-allocation.test" options="-parameters" />
       <module name="timefold-workshop.school-timetabling" options="-parameters" />
       <module name="timefold-workshop.school-timetabling.aot" options="-parameters" />
       <module name="timefold-workshop.school-timetabling.aotTest" options="-parameters" />

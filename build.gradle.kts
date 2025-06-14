@@ -20,7 +20,7 @@ plugins {
 
     id(Plugins.dependency_management) version Plugins.Versions.dependency_management
     id(Plugins.spring_boot) version Plugins.Versions.spring_boot apply false
-    id(Plugins.quarkus) version Plugins.Versions.quarkus apply false
+    // id(Plugins.quarkus) version Plugins.Versions.quarkus apply false
 
     id(Plugins.dokka) version Plugins.Versions.dokka
     id(Plugins.testLogger) version Plugins.Versions.testLogger
@@ -45,6 +45,7 @@ allprojects {
     repositories {
         mavenCentral()
         google()
+        mavenLocal()
         maven {
             name = "bluetape4k"
             url = uri("https://maven.pkg.github.com/bluetape4k/bluetape4k-projects")
@@ -55,7 +56,7 @@ allprojects {
         }
     }
     configurations.all {
-        resolutionStrategy.cacheChangingModulesFor(3, TimeUnit.DAYS)
+        resolutionStrategy.cacheChangingModulesFor(1, TimeUnit.DAYS)
     }
 }
 
@@ -177,10 +178,10 @@ subprojects {
             }
         }
 
-        dokkaHtml.configure {
-            val dokkaDir = layout.buildDirectory.asFile.get().resolve("dokka")
-            outputDirectory.set(dokkaDir)
-            // outputDirectory.set(layout.buildDirectory.asFile.get().resolve("dokka"))
+        dokka {
+            dokkaPublications.html {
+                outputDirectory.set(project.file("docs/api"))
+            }
         }
 
         clean {

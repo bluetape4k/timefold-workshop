@@ -1,4 +1,4 @@
-# timefold-workshop
+# Module timefold-workshop
 
 [timefold.ai](https://timefold.ai/) 를 사용하는 예제를 제공하는 레포지토리입니다.
 

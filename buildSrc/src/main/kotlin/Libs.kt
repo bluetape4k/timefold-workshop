@@ -18,15 +18,15 @@ object Plugins {
         const val shadow = "7.1.2"
         const val kotlinx_benchmark = "0.4.13" // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-benchmark-plugin
 
-        const val spring_boot = "3.5.5"  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
-        const val quarkus = "3.22.2"      // https://mvnrepository.com/artifact/io.quarkus/quarkus-bom
+        const val spring_boot = "3.5.6"  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
+        const val quarkus = "3.28.0"      // https://mvnrepository.com/artifact/io.quarkus/quarkus-bom
 
         const val docker_compose = "0.17.12"  // https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
 
         // 참고: https://docs.gatling.io/reference/integrations/build-tools/gradle-plugin/
         const val gatling = "3.14.3"  // https://plugins.gradle.org/plugin/io.gatling.gradle
 
-        const val graalvm_native = "0.10.6" // https://mvnrepository.com/artifact/org.graalvm.buildtools.native/org.graalvm.buildtools.native.gradle.plugin
+        const val graalvm_native = "0.11.0" // https://mvnrepository.com/artifact/org.graalvm.buildtools.native/org.graalvm.buildtools.native.gradle.plugin
     }
 
     const val detekt = "io.gitlab.arturbosch.detekt"
@@ -68,7 +68,7 @@ object Versions {
     // Java 21, Kotlin 2.0 이상에서 사용하세요
     const val bluetape4k = "0.1.0-SNAPSHOT"      // Bluetape4k Github Package 로 배포됩니다.
 
-    const val timefold_solver = "1.22.1" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
+    const val timefold_solver = "1.26.0" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
 
     const val kotlin = "2.2.20"                 // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib
     const val kotlinx_coroutines = "1.10.2"      // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core

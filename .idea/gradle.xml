@@ -24,6 +24,8 @@
             <option value="$PROJECT_DIR$/01-quickstarts/bed-allocation" />
             <option value="$PROJECT_DIR$/01-quickstarts/school-timetabling" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/exposed/jdbc" />
+            <option value="$PROJECT_DIR$/exposed/r2dbc" />
           </set>
         </option>
       </GradleProjectSettings>

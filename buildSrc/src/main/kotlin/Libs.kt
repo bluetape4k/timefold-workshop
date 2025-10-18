@@ -21,12 +21,12 @@ object Plugins {
         const val spring_boot = "3.5.6"  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
         const val quarkus = "3.28.0"      // https://mvnrepository.com/artifact/io.quarkus/quarkus-bom
 
-        const val docker_compose = "0.17.12"  // https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
+        const val docker_compose = "0.17.18"  // https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
 
         // 참고: https://docs.gatling.io/reference/integrations/build-tools/gradle-plugin/
-        const val gatling = "3.14.3"  // https://plugins.gradle.org/plugin/io.gatling.gradle
+        const val gatling = "3.14.6"  // https://plugins.gradle.org/plugin/io.gatling.gradle
 
-        const val graalvm_native = "0.11.0" // https://mvnrepository.com/artifact/org.graalvm.buildtools.native/org.graalvm.buildtools.native.gradle.plugin
+        const val graalvm_native = "0.11.2" // https://mvnrepository.com/artifact/org.graalvm.buildtools.native/org.graalvm.buildtools.native.gradle.plugin
     }
 
     const val detekt = "io.gitlab.arturbosch.detekt"
@@ -81,7 +81,7 @@ object Versions {
     const val spring_boot = Plugins.Versions.spring_boot
     const val spring_cloud = "2025.0.0"     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
     const val spring_integration = "6.4.5"  // https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-core
-    const val reactor_bom = "2024.0.10"      // https://mvnrepository.com/artifact/io.projectreactor/reactor-bom
+    const val reactor_bom = "2024.0.11"      // https://mvnrepository.com/artifact/io.projectreactor/reactor-bom
     const val spring_statemachine = "4.0.0" // https://mvnrepository.com/artifact/org.springframework.statemachine/spring-statemachine-core
     const val spring_modulith = "1.4.3"     // https://mvnrepository.com/artifact/org.springframework.modulith/spring-modulith-bom
 
@@ -109,9 +109,9 @@ object Versions {
     const val springfox_swagger = "3.0.0"
     const val problem = "0.29.1"              // https://mvnrepository.com/artifact/org.zalando/problem-spring-web
 
-    const val bucket4j = "8.10.1"       // https://mvnrepository.com/artifact/com.bucket4j/bucket4j-core
+    const val bucket4j = "8.15.0"       // https://mvnrepository.com/artifact/com.bucket4j/bucket4j-core
     const val resilience4j = "2.3.0"   // https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-bom
-    const val netty = "4.2.6.Final"  // https://mvnrepository.com/artifact/io.netty/netty-all
+    const val netty = "4.2.7.Final"  // https://mvnrepository.com/artifact/io.netty/netty-all
 
     const val aws = "1.12.772"          // https://mvnrepository.com/artifact/com.amazonaws
     const val aws2 = "2.31.47"              // https://mvnrepository.com/artifact/software.amazon.awssdk/aws-sdk-java
@@ -745,7 +745,7 @@ object Libs {
     val resilience4j_vertx = resilience4j("vertx")
 
     // Bucket4j
-    fun bucket4j(module: String) = "com.bucket4j:bucket4j-$module:${Versions.bucket4j}"
+    fun bucket4j(module: String) = "com.bucket4j:bucket4j_jdk17-$module:${Versions.bucket4j}"
     val bucket4j_caffeine = bucket4j("caffeine")
     val bucket4j_core = bucket4j("core")
     val bucket4j_jcache = bucket4j("jcache")
@@ -1354,7 +1354,7 @@ object Libs {
     const val r2dbc_mariadb = "org.mariadb:r2dbc-mariadb:1.3.0" // https://github.com/mariadb-corporation/mariadb-connector-r2dbc
 
     // https://github.com/pgjdbc/r2dbc-postgresql
-    const val r2dbc_postgresql = "org.postgresql:r2dbc-postgresql:1.0.7.RELEASE" // https://mvnrepository.com/artifact/org.postgresql/r2dbc-postgresql
+    const val r2dbc_postgresql = "org.postgresql:r2dbc-postgresql:1.1.0.RELEASE" // https://mvnrepository.com/artifact/org.postgresql/r2dbc-postgresql
 
     // QueryDSL
     fun querydsl(module: String) = "com.querydsl:querydsl-$module:${Versions.querydsl}"

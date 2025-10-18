@@ -15,8 +15,8 @@ object Plugins {
         const val jacoco = "0.8.11"
         const val jarTest = "1.0.1"
         const val testLogger = "4.0.0"
-        const val shadow = "7.1.2"
-        const val kotlinx_benchmark = "0.4.13" // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-benchmark-plugin
+        const val shadow = "9.0.2"
+        const val kotlinx_benchmark = "0.4.14" // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-benchmark-plugin
 
         const val spring_boot = "3.5.6"  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
         const val quarkus = "3.28.0"      // https://mvnrepository.com/artifact/io.quarkus/quarkus-bom

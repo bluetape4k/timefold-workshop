@@ -114,37 +114,38 @@ object Versions {
     const val netty = "4.2.7.Final"  // https://mvnrepository.com/artifact/io.netty/netty-all
 
     const val aws = "1.12.772"          // https://mvnrepository.com/artifact/com.amazonaws
-    const val aws2 = "2.31.47"              // https://mvnrepository.com/artifact/software.amazon.awssdk/aws-sdk-java
-    const val aws2_crt = "0.38.3"           // https://mvnrepository.com/artifact/software.amazon.awssdk.crt/aws-crt
-    const val aws_kotlin = "1.4.89"        // https://mvnrepository.com/artifact/aws.sdk.kotlin/aws-http-jvm
-    const val aws_smithy_kotlin = "1.4.16" // https://mvnrepository.com/artifact/aws.smithy.kotlin/http-client-engine-crt-jvm
+    const val aws2 = "2.35.6"           // https://mvnrepository.com/artifact/software.amazon.awssdk/aws-sdk-java
+    const val aws2_crt = "0.39.2"      // https://mvnrepository.com/artifact/software.amazon.awssdk.crt/aws-crt
+    const val aws_kotlin = "1.5.61"     // https://mvnrepository.com/artifact/aws.sdk.kotlin/aws-http-jvm
+    const val aws_smithy_kotlin = "1.5.14" // https://mvnrepository.com/artifact/aws.smithy.kotlin/http-client-engine-crt-jvm
 
-    const val aws_spring_cloud = "3.3.0"  // https://mvnrepository.com/artifact/io.awspring.cloud/spring-cloud-aws-starter
+    const val aws_spring_cloud = "3.4.0"  // https://mvnrepository.com/artifact/io.awspring.cloud/spring-cloud-aws-starter
 
-    const val grpc = "1.68.2"       // https://mvnrepository.com/artifact/io.grpc/grpc-stub
-    const val grpc_kotlin = "1.4.1" // https://mvnrepository.com/artifact/io.grpc/grpc-kotlin-stub
-    const val protobuf = "4.29.1"   // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
-    const val grpc_google_common_protos = "2.50.0" // https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos
+    const val grpc = "1.76.0"       // https://mvnrepository.com/artifact/io.grpc/grpc-stub
+    const val grpc_kotlin = "1.5.0" // https://mvnrepository.com/artifact/io.grpc/grpc-kotlin-stub
+    const val protobuf = "4.32.1"   // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
+    const val grpc_google_common_protos = "2.61.3" // https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos
     const val avro = "1.12.0"       // https://mvnrepository.com/artifact/org.apache.avro/avro
 
-    const val feign = "13.6"        // https://mvnrepository.com/artifact/io.github.openfeign/feign-core
-    const val httpclient5 = "5.5"   // https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
-    const val httpcore5 = "5.3.4"    // https://mvnrepository.com/artifact/org.apache.httpcomponents.core5/httpcore5
-    const val retrofit2 = "2.12.0"   // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
-    const val okhttp3 = "4.12.0"     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
-    const val okio = "3.10.2"         // https://mvnrepository.com/artifact/com.squareup.okio/okio
+    const val feign = "13.6"         // https://mvnrepository.com/artifact/io.github.openfeign/feign-core
+    const val httpclient5 = "5.5.1"  // https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
+    const val httpcore5 = "5.3.6"    // https://mvnrepository.com/artifact/org.apache.httpcomponents.core5/httpcore5
+    const val retrofit2 = "3.0.0"   // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
+    const val okhttp3 = "5.2.1"     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+    const val okio = "3.16.2"        // https://mvnrepository.com/artifact/com.squareup.okio/okio
     const val asynchttpclient = "2.12.4"  // https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client
 
-    const val jackson = "2.19.0" // https://mvnrepository.com/artifact/com.fasterxml.jackson/jackson-bom
-    const val fastjson2 = "2.0.57" // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
+    const val jackson = "2.20.0" // https://mvnrepository.com/artifact/com.fasterxml.jackson/jackson-bom
+    const val jackson3 = "3.0.0" // https://mvnrepository.com/artifact/tools.jackson/jackson-bom
+    const val fastjson2 = "2.0.59" // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
     const val jjwt = "0.11.5"    // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
 
     const val mapstruct = "1.6.3" // https://mvnrepository.com/artifact/org.mapstruct/mapstruct
     const val reflectasm = "1.11.9"     // https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm
 
     const val mongo_driver = "5.5.1"   // https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync
-    const val lettuce = "6.7.1.RELEASE" // https://mvnrepository.com/artifact/io.lettuce/lettuce-core
-    const val redisson = "3.49.0"       // https://mvnrepository.com/artifact/org.redisson/redisson
+    const val lettuce = "6.8.1.RELEASE" // https://mvnrepository.com/artifact/io.lettuce/lettuce-core
+    const val redisson = "3.52.0"       // https://mvnrepository.com/artifact/org.redisson/redisson
 
     // NOTE: Hibernate 는 jakarta 버전인 경우 orm, validator 등이 group 에 포함됩니다.
     // NOTE: 이 경우 기존 javax 를 사용하는 버전과 충돌이 생길 수 있으니 조심하세요

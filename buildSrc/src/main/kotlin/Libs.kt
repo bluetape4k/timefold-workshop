@@ -15,7 +15,7 @@ object Plugins {
         const val jacoco = "0.8.11"
         const val jarTest = "1.0.1"
         const val testLogger = "4.0.0"
-        const val shadow = "9.0.2"
+        const val shadow = "9.2.2"
         const val kotlinx_benchmark = "0.4.14" // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-benchmark-plugin
 
         const val spring_boot = "3.5.6"  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
@@ -48,7 +48,7 @@ object Plugins {
 
     // https://mvnrepository.com/artifact/com.adarshr/gradle-test-logger-plugin
     const val testLogger = "com.adarshr.test-logger"
-    const val shadow = "com.github.johnrengelman.shadow"
+    const val shadow = "com.gradleup.shadow" // https://plugins.gradle.org/plugin/com.gradleup.shadow
 
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-benchmark-plugin
     const val kotlinx_benchmark = "org.jetbrains.kotlinx.benchmark"
@@ -156,8 +156,8 @@ object Versions {
     const val hibernate_validator = "8.0.2.Final" // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
     const val querydsl = "5.1.0"                  // https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa
 
-    const val exposed = "1.0.0-beta-2"       // https://mvnrepository.com/artifact/org.jetbrains.exposed/exposed-core
-
+    const val exposed = "1.0.0-rc-2"       // https://mvnrepository.com/artifact/org.jetbrains.exposed/exposed-core
+    const val r2dbc = "1.0.0.RELEASE"        // https://mvnrepository.com/artifact/io.r2dbc/r2dbc-spi
     const val agroal = "2.6"          // https://mvnrepository.com/artifact/io.agroal/agroal-api
 
     const val blaze_persistence = "3.22.2" // https://mvnrepository.com/artifact/io.quarkus.platform/quarkus-blaze-persistence-bom
@@ -212,7 +212,7 @@ object Versions {
     const val archunit = "1.4.0"           // https://mvnrepository.com/artifact/com.tngtech.archunit/archunit-junit5
     const val rest_assured = "5.5.5"        // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
 
-    const val datafaker = "2.4.3"          // https://mvnrepository.com/artifact/net.datafaker/datafaker
+    const val datafaker = "2.5.0"          // https://mvnrepository.com/artifact/net.datafaker/datafaker
     const val snakeyaml = "2.4"            // https://mvnrepository.com/artifact/org.yaml/snakeyaml
     const val random_beans = "3.9.0"
 
@@ -995,7 +995,7 @@ object Libs {
     const val mapstruct = "org.mapstruct:mapstruct:${Versions.mapstruct}"
     const val mapstruct_processor = "org.mapstruct:mapstruct-processor:${Versions.mapstruct}"
 
-    // Jackson
+    // Jackson 2
     const val jackson_bom = "com.fasterxml.jackson:jackson-bom:${Versions.jackson}"
 
     fun jackson(group: String, module: String, version: String = Versions.jackson): String {
@@ -1005,7 +1005,6 @@ object Libs {
 
     fun jacksonCore(module: String, version: String = Versions.jackson) = jackson("core", module, version)
 
-    val jackson_annotations = jacksonCore("annotations")
     val jackson_core = jacksonCore("core")
     val jackson_databind = jacksonCore("databind")
 
@@ -1028,6 +1027,7 @@ object Libs {
     val jackson_dataformat_csv = jacksonDataFormat("csv")
     val jackson_dataformat_properties = jacksonDataFormat("properties")
     val jackson_dataformat_yaml = jacksonDataFormat("yaml")
+    val jackson_dataformat_toml = jacksonDataFormat("toml")
 
     fun jacksonModule(module: String, version: String = Versions.jackson) = jackson("module", module, version)
     val jackson_module_kotlin = jacksonModule("kotlin")
@@ -1037,6 +1037,48 @@ object Libs {
     // https://github.com/FasterXML/jackson-modules-base/blob/master/blackbird/README.md
     val jackson_module_blackbird = jacksonModule("blackbird")
     val jackson_module_jsonSchema = jacksonModule("jsonSchema")
+
+    // Jackson 3
+    const val jackson3_bom = "tools.jackson:jackson-bom:${Versions.jackson3}"
+
+    fun jackson3(group: String, module: String, version: String = Versions.jackson3): String {
+        return if (group == "core") "tools.jackson.$group:jackson-$module:$version"
+        else "tools.jackson.$group:jackson-$group-$module:$version"
+    }
+
+    fun jackson3Core(module: String) = jackson3("core", module)
+    val jackson3_core = jackson3Core("core")
+    val jackson3_databind = jackson3Core("databind")
+
+    fun jackson3DataType(module: String) = jackson3("datatype", module)
+    val jackson3_datatype_eclipse_collections = jackson3DataType("eclipse-collections")
+    val jackson3_datatype_guava = jackson3DataType("guava")
+    val jackson3_datatype_jsr353 = jackson3DataType("jsr353")
+    val jackson3_datatype_moneta = jackson3DataType("moneta")
+
+
+    fun jackson3DataFormat(module: String) = jackson3("dataformat", module)
+    // Binary
+    val jackson3_dataformat_avro = jackson3DataFormat("avro")
+    val jackson3_dataformat_cbor = jackson3DataFormat("cbor")
+    val jackson3_dataformat_ion = jackson3DataFormat("ion")
+    val jackson3_dataformat_protobuf = jackson3DataFormat("protobuf")
+    val jackson3_dataformat_smile = jackson3DataFormat("smile")
+
+    // Text
+    val jackson3_dataformat_csv = jackson3DataFormat("csv")
+    val jackson3_dataformat_properties = jackson3DataFormat("properties")
+    val jackson3_dataformat_yaml = jackson3DataFormat("yaml")
+    val jackson3_dataformat_toml = jackson3DataFormat("toml")
+
+    fun jackson3Module(module: String) = jackson3("module", module)
+    val jackson3_module_kotlin = jackson3Module("kotlin")
+    val jackson3_module_paranamer = jackson3Module("parameter")
+    // val jackson3_module_parameter_names = jackson3Module("parameter-names")
+    // Java 11+ 에서는 afterburner 대신 blackbird를 사용하세요
+    // https://github.com/FasterXML/jackson-modules-base/blob/master/blackbird/README.md
+    val jackson3_module_blackbird = jackson3Module("blackbird")
+    val jackson3_module_jsonSchema = jackson3Module("jsonSchema")
 
     // FastJson2
     fun fastjson2(module: String) = "com.alibaba.fastjson2:$module:${Versions.fastjson2}"
@@ -1344,15 +1386,15 @@ object Libs {
     const val exposed_spring_transaction = "org.jetbrains.exposed:spring-transaction:${Versions.exposed}"
 
     // R2DBC (버전은 spring-data 버전을 사용한다)
-    fun r2dbc(module: String): String = "io.r2dbc:r2dbc-$module"
-    val r2dbc_pool = r2dbc("pool")
+    fun r2dbc(module: String, version: String = Versions.r2dbc): String = "io.r2dbc:r2dbc-$module:$version"
     val r2dbc_spi = r2dbc("spi")
-
     val r2dbc_h2 = r2dbc("h2")
+    val r2dbc_pool = r2dbc("pool", "1.0.2.RELEASE")
+    val r2dbc_proxy = r2dbc("spi", "1.1.6.RELEASE")
 
     // 참고 : https://github.com/asyncer-io/r2dbc-mysql
     const val r2dbc_mysql = "io.asyncer:r2dbc-mysql:1.4.1"  // https://mvnrepository.com/artifact/io.asyncer/r2dbc-mysql
-    const val r2dbc_mariadb = "org.mariadb:r2dbc-mariadb:1.3.0" // https://github.com/mariadb-corporation/mariadb-connector-r2dbc
+    const val r2dbc_mariadb = "org.mariadb:r2dbc-mariadb:1.3.0"  // https://github.com/mariadb-corporation/mariadb-connector-r2dbc
 
     // https://github.com/pgjdbc/r2dbc-postgresql
     const val r2dbc_postgresql = "org.postgresql:r2dbc-postgresql:1.1.0.RELEASE" // https://mvnrepository.com/artifact/org.postgresql/r2dbc-postgresql

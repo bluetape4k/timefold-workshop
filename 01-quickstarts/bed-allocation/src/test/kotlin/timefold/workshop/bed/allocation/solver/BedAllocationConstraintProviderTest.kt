@@ -20,7 +20,7 @@ import java.time.LocalDate
 @SpringBootTest
 @DisabledInNativeImage
 class BedAllocationConstraintProviderTest(
-    @Autowired private val constraintVerifier: ConstraintVerifier<BedAllocationConstraintProvider, BedPlan>,
+    @param:Autowired private val constraintVerifier: ConstraintVerifier<BedAllocationConstraintProvider, BedPlan>,
 ) {
 
     companion object: KLoggingChannel() {

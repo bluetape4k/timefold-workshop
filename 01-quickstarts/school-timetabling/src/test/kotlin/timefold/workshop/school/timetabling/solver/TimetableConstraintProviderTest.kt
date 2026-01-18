@@ -16,7 +16,7 @@ import java.time.LocalTime
 @SpringBootTest
 @DisabledInNativeImage
 class TimetableConstraintProviderTest(
-    @Autowired private val constraintVerifier: ConstraintVerifier<TimetableConstraintProvider, Timetable>,
+    @param:Autowired private val constraintVerifier: ConstraintVerifier<TimetableConstraintProvider, Timetable>,
 ) {
 
     companion object: KLoggingChannel() {

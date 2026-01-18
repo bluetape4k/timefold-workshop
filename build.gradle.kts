@@ -1,13 +1,9 @@
-import io.gitlab.arturbosch.detekt.Detekt
-import io.gitlab.arturbosch.detekt.report.ReportMergeTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     base
-    // jacoco
     kotlin("jvm") version Versions.kotlin
 
-    // see: https://kotlinlang.org/docs/reference/compiler-plugins.html
     kotlin("plugin.spring") version Versions.kotlin apply false
     kotlin("plugin.allopen") version Versions.kotlin apply false
     kotlin("plugin.noarg") version Versions.kotlin apply false
@@ -16,20 +12,11 @@ plugins {
     kotlin("plugin.atomicfu") version Versions.kotlin
     kotlin("kapt") version Versions.kotlin apply false
 
-    id(Plugins.detekt) version Plugins.Versions.detekt
-
     id(Plugins.dependency_management) version Plugins.Versions.dependency_management
     id(Plugins.spring_boot) version Plugins.Versions.spring_boot apply false
-    // id(Plugins.quarkus) version Plugins.Versions.quarkus apply false
 
-    id(Plugins.dokka) version Plugins.Versions.dokka
     id(Plugins.testLogger) version Plugins.Versions.testLogger
-    id(Plugins.shadow) version Plugins.Versions.shadow apply false
-
     id(Plugins.graalvm_native) version Plugins.Versions.graalvm_native apply false
-
-    // for JMolecules
-    id("net.bytebuddy.byte-buddy-gradle-plugin") version "1.17.5" apply false
 }
 
 // NOTE: Github 에 등록된 Package 를 다운받기 위해서 사용합니다.
@@ -61,9 +48,6 @@ allprojects {
 }
 
 subprojects {
-    if (name == "bluetape4k-bom") {
-        return@subprojects
-    }
 
     apply {
         plugin<JavaLibraryPlugin>()
@@ -71,12 +55,7 @@ subprojects {
         // Kotlin 1.9.20 부터는 pluginId 를 지정해줘야 합니다.
         plugin("org.jetbrains.kotlin.jvm")
 
-        // plugin("jacoco")
-        plugin("maven-publish")
-
         plugin(Plugins.dependency_management)
-
-        plugin(Plugins.dokka)
         plugin(Plugins.testLogger)
     }
 
@@ -95,11 +74,12 @@ subprojects {
             apiVersion.set(KotlinVersion.KOTLIN_2_3)
             freeCompilerArgs = listOf(
                 "-Xjsr305=strict",
-                "-Xjvm-default=all",
+                "-jvm-default=enable",
                 "-Xinline-classes",
                 "-Xstring-concat=indy",         // since Kotlin 1.4.20 for JVM 9+
-                "-Xenable-builder-inference",   // since Kotlin 1.6
-                "-Xcontext-receivers"           // since Kotlin 1.6
+                // "-Xenable-builder-inference",   // since Kotlin 1.6
+                "-Xcontext-parameters",           // since Kotlin 1.6
+                "-Xannotation-default-target=param-property"
             )
             val experimentalAnnotations = listOf(
                 "kotlin.RequiresOptIn",
@@ -113,6 +93,15 @@ subprojects {
             )
             freeCompilerArgs.addAll(experimentalAnnotations.map { "-opt-in=$it" })
         }
+
+        @Suppress("OPT_IN_USAGE")
+        kotlinDaemonJvmArgs = listOf(
+            "-Xmx2G",
+            "-XX:MaxMetaspaceSize=512m",
+            "-XX:+UseZGC",
+            "-XX:+UseStringDeduplication",
+            "-XX:+EnableDynamicAgentLoading"
+        )
     }
 
     tasks {
@@ -153,37 +142,6 @@ subprojects {
             showFullStackTraces = true
         }
 
-        val reportMerge by registering(ReportMergeTask::class) {
-            val file = rootProject.layout.buildDirectory.asFile.get().resolve("reports/detekt/exposed.xml")
-            output.set(file)
-            // output.set(rootProject.buildDir.resolve("reports/detekt/exposed.xml"))
-        }
-        withType<Detekt>().configureEach detekt@{
-            enabled = this@subprojects.name !== "exposed-tests"
-            finalizedBy(reportMerge)
-            reportMerge.configure {
-                input.from(this@detekt.xmlReportFile)
-            }
-        }
-
-        // https://kotlin.github.io/dokka/1.6.0/user_guide/gradle/usage/
-        withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
-            val javadocDir = layout.buildDirectory.asFile.get().resolve("javadoc")
-            outputDirectory.set(javadocDir)
-            // outputDirectory.set(layout.buildDirectory.asFile.get().resolve("javadoc"))
-            dokkaSourceSets {
-                configureEach {
-                    includes.from("README.md")
-                }
-            }
-        }
-
-        dokka {
-            dokkaPublications.html {
-                outputDirectory.set(project.file("docs/api"))
-            }
-        }
-
         clean {
             doLast {
                 delete("./.project")
@@ -219,7 +177,6 @@ subprojects {
             mavenBom(Libs.okhttp3_bom)
             mavenBom(Libs.grpc_bom)
             mavenBom(Libs.protobuf_bom)
-            mavenBom(Libs.metrics_bom)
             mavenBom(Libs.fabric8_kubernetes_client_bom)
             mavenBom(Libs.resilience4j_bom)
             mavenBom(Libs.netty_bom)
@@ -268,20 +225,6 @@ subprojects {
             dependency(Libs.logback)
             dependency(Libs.logback_core)
 
-            // Javax API
-            dependency(Libs.javax_activation_api)
-            dependency(Libs.javax_annotation_api)
-            dependency(Libs.javax_el_api)
-            dependency(Libs.javax_cache_api)
-            dependency(Libs.javax_inject)
-            dependency(Libs.javax_json_api)
-            dependency(Libs.javax_persistence_api)
-            dependency(Libs.javax_servlet_api)
-            dependency(Libs.javax_transaction_api)
-            dependency(Libs.javax_validation_api)
-            dependency(Libs.javax_ws_rs_api)
-            dependency(Libs.javax_xml_bind)
-
             // jakarta
             dependency(Libs.jakarta_activation_api)
             dependency(Libs.jakarta_annotation_api)
@@ -311,7 +254,7 @@ subprojects {
             dependency(Libs.guava)
 
             dependency(Libs.kryo)
-            dependency(Libs.fury_kotlin)
+            dependency(Libs.fory_kotlin)
 
             // Jackson (이상하게 mavenBom 에 적용이 안되어서 강제로 추가하였다)
             dependency(Libs.jackson_bom)
@@ -484,9 +427,5 @@ subprojects {
 
         // Property baesd test
         testImplementation(Libs.datafaker)
-        testImplementation(Libs.random_beans)
-
-        // Byte Buddy
-        implementation(Libs.byte_buddy_agent)
     }
 }

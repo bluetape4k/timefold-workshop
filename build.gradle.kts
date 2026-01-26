@@ -399,9 +399,7 @@ subprojects {
         compileOnly(platform(Libs.kotlinx_coroutines_bom))
 
         api(Libs.kotlin_stdlib)
-        api(Libs.kotlin_stdlib_jdk8)
         api(Libs.kotlin_reflect)
-        api(Libs.kotlinx_atomicfu)
         testImplementation(Libs.kotlin_test)
         testImplementation(Libs.kotlin_test_junit5)
 
@@ -419,7 +417,6 @@ subprojects {
         testImplementation(Libs.bluetape4k_junit5)
         testImplementation(Libs.junit_jupiter)
         testRuntimeOnly(Libs.junit_platform_engine)
-        testImplementation(Libs.junit_jupiter_migrationsupport)
 
         testImplementation(Libs.kluent)
         testImplementation(Libs.mockk)

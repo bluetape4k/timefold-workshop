@@ -68,8 +68,8 @@ class TimetableController(
             .solveBuilder()
             .withProblemId(jobId)
             .withProblemFinder { jobIdToJob[it]!!.timetable }
-            .withBestSolutionConsumer { solution ->
-                jobIdToJob[jobId] = Job.ofTimetable(solution)
+            .withBestSolutionEventConsumer { event ->
+                jobIdToJob[jobId] = Job.ofTimetable(event.solution())
             }
             .withExceptionHandler { jobId, exception ->
                 jobIdToJob[jobId] = Job.ofException(exception)

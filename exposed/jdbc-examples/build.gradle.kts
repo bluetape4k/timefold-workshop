@@ -12,7 +12,7 @@ dependencies {
     // Timefold Solver의 Score 에 대해 Exposed 용 Custom Column Types 제공
     implementation(Libs.bluetape4k_timefold_solver_persistence_exposed)
 
-    testImplementation(Libs.bluetape4k_exposed_tests)
+    testImplementation(Libs.bluetape4k_exposed_jdbc_tests)
 
     testImplementation(Libs.bluetape4k_io)
     testImplementation(Libs.bluetape4k_coroutines)

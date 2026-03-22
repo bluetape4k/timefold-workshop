@@ -32,18 +32,17 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        mavenLocal()
+
+        // bluetape4k snapshot 버전 사용 시만 사용하세요.
         maven {
-            name = "bluetape4k"
-            url = uri("https://maven.pkg.github.com/bluetape4k/bluetape4k-projects")
-            credentials {
-                username = "debop"
-                password = bluetape4kGprKey
-            }
+            name = "central-portal-snapshots"
+            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
         }
     }
+
+    // bluetape4k snapshot 버전 사용 시만 사용하세요.
     configurations.all {
-        resolutionStrategy.cacheChangingModulesFor(1, TimeUnit.DAYS)
+        resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.DAYS)
     }
 }
 
@@ -75,7 +74,7 @@ subprojects {
             freeCompilerArgs = listOf(
                 "-Xjsr305=strict",
                 "-jvm-default=enable",
-                "-Xinline-classes",
+                // "-Xinline-classes",          // Kotlin 2.0 부터 불필요
                 "-Xstring-concat=indy",         // since Kotlin 1.4.20 for JVM 9+
                 // "-Xenable-builder-inference",   // since Kotlin 1.6
                 "-Xcontext-parameters",           // since Kotlin 1.6

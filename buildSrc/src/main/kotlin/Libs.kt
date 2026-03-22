@@ -18,7 +18,7 @@ object Plugins {
         const val shadow = "9.2.2"              // https://plugins.gradle.org/plugin/com.gradleup.shadow
         const val kotlinx_benchmark = "0.4.14" // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-benchmark-plugin
 
-        const val spring_boot = "3.5.9"  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
+        const val spring_boot = "3.5.12"  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
         const val docker_compose = "0.17.19"  // https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
 
         // 참고: https://docs.gatling.io/reference/integrations/build-tools/gradle-plugin/
@@ -63,15 +63,15 @@ object Plugins {
 object Versions {
 
     // Java 21, Kotlin 2.0 이상에서 사용하세요
-    const val bluetape4k = "1.1.0-SNAPSHOT"    // Bluetape4k Github Package 로 배포됩니다.
+    const val bluetape4k = "1.5.0-SNAPSHOT"    // Bluetape4k Github Package 로 배포됩니다.
 
-    const val kotlin = "2.3.0"                 // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib
+    const val timefold_solver = "1.32.0" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
+
+    const val kotlin = "2.3.20"                 // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib
     const val kotlinx_coroutines = "1.10.2"      // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
     const val kotlinx_serialization = "1.9.0"   // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm
 
     const val kotlinx_benchmark = Plugins.Versions.kotlinx_benchmark
-
-    const val timefold_solver = "1.30.0" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
 
     const val spring_boot = Plugins.Versions.spring_boot
     const val spring_cloud = "2025.0.1"     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
@@ -234,7 +234,7 @@ object Libs {
 
 
     // bluetape4k
-    fun bluetape4k(module: String, version: String = Versions.bluetape4k) = "io.bluetape4k:bluetape4k-$module:$version"
+    fun bluetape4k(module: String, version: String = Versions.bluetape4k) = "io.github.bluetape4k:bluetape4k-$module:$version"
 
     val bluetape4k_bom = bluetape4k("bom")
 
@@ -243,6 +243,11 @@ object Libs {
     val bluetape4k_logging = bluetape4k("logging")
     val bluetape4k_junit5 = bluetape4k("junit5")
     val bluetape4k_testcontainers = bluetape4k("testcontainers")
+
+    // Virtual Thread
+    val bluetape4k_virtualthread_api = bluetape4k("virtualthread-api")
+    val bluetape4k_virtualthread_jdk21 = bluetape4k("virtualthread-jdk21")
+    val bluetape4k_virtualthread_jdk25 = bluetape4k("virtualthread-jdk25")
 
     // IO
     val bluetape4k_avro = bluetape4k("avro")
@@ -253,82 +258,88 @@ object Libs {
     val bluetape4k_grpc = bluetape4k("grpc")
     val bluetape4k_http = bluetape4k("http")
     val bluetape4k_io = bluetape4k("io")
-    val bluetape4k_jackson = bluetape4k("jackson")
-    val bluetape4k_jackson_binary = bluetape4k("jackson-binary")
-    val bluetape4k_jackson_text = bluetape4k("jackson-text")
+    val bluetape4k_jackson2 = bluetape4k("jackson2")
     val bluetape4k_jackson3 = bluetape4k("jackson3")
-    val bluetape4k_jackson3_binary = bluetape4k("jackson3-binary")
-    val bluetape4k_jackson3_text = bluetape4k("jackson3-text")
     val bluetape4k_netty = bluetape4k("netty")
+    val bluetape4k_okio = bluetape4k("okio")
     val bluetape4k_retrofit2 = bluetape4k("retrofit2")
+    val bluetape4k_tink = bluetape4k("tink")
+    val bluetape4k_vertx = bluetape4k("vertx")
 
     // Data
     val bluetape4k_cassandra = bluetape4k("cassandra")
+
     val bluetape4k_exposed = bluetape4k("exposed")
+    val bluetape4k_exposed_core = bluetape4k("exposed-core")
+    val bluetape4k_exposed_dao = bluetape4k("exposed-dao")
+    val bluetape4k_exposed_jdbc = bluetape4k("exposed-jdbc")
     val bluetape4k_exposed_fastjson2 = bluetape4k("exposed-fastjson2")
-    val bluetape4k_exposed_jackson = bluetape4k("exposed-jackson")
+    val bluetape4k_exposed_jackson2 = bluetape4k("exposed-jackson2")
     val bluetape4k_exposed_jackson3 = bluetape4k("exposed-jackson3")
     val bluetape4k_exposed_jasypt = bluetape4k("exposed-jasypt")
+    val bluetape4k_exposed_jdbc_redisson = bluetape4k("exposed-jdbc-redisson")
+    val bluetape4k_exposed_jdbc_tests = bluetape4k("exposed-jdbc-tests")
+    val bluetape4k_exposed_measured = bluetape4k("exposed-measured")
     val bluetape4k_exposed_r2dbc = bluetape4k("exposed-r2dbc")
     val bluetape4k_exposed_r2dbc_redisson = bluetape4k("exposed-r2dbc-redisson")
     val bluetape4k_exposed_r2dbc_tests = bluetape4k("exposed-r2dbc-tests")
-    val bluetape4k_exposed_redisson = bluetape4k("exposed-redisson")
-    val bluetape4k_exposed_tests = bluetape4k("exposed-tests")
+    val bluetape4k_exposed_tink = bluetape4k("exposed-tink")
+
+    val bluetape4k_timefold_solver_persistence_exposed = bluetape4k("timefold-solver-persistence-exposed")
+
     val bluetape4k_hibernate = bluetape4k("hibernate")
     val bluetape4k_hibernate_reactive = bluetape4k("hibernate-reactive")
+
     val bluetape4k_jdbc = bluetape4k("jdbc")
+    val bluetape4k_mongodb = bluetape4k("mongodb")
     val bluetape4k_r2dbc = bluetape4k("r2dbc")
-    val bluetape4k_redis = bluetape4k("redis")
 
     // Infrastructure
     val bluetape4k_bucket4j = bluetape4k("bucket4j")
     val bluetape4k_cache = bluetape4k("cache")
-    val bluetape4k_graphql = bluetape4k("graphql")
+    val bluetape4k_cache_core = bluetape4k("cache-core")
+    val bluetape4k_cache_hazelcast = bluetape4k("cache-hazelcast")
+    val bluetape4k_cache_lettuce = bluetape4k("cache-lettuce")
+    val bluetape4k_cache_redisson = bluetape4k("cache-redisson")
     val bluetape4k_kafka = bluetape4k("kafka")
+    val bluetape4k_lettuce = bluetape4k("lettuce")
     val bluetape4k_micrometer = bluetape4k("micrometer")
-    val bluetape4k_nats = bluetape4k("nats")
-    val bluetape4k_otel = bluetape4k("otel")
+    val bluetape4k_opentelemetry = bluetape4k("opentelemetry")
+    val bluetape4k_redis = bluetape4k("redis")
+    val bluetape4k_redisson = bluetape4k("redisson")
     val bluetape4k_resilience4j = bluetape4k("resilience4j")
 
-    // Spring
-    val bluetape4k_spring_cassandra = bluetape4k("spring-cassandra")
-    val bluetape4k_spring_core = bluetape4k("spring-core")
-    val bluetape4k_spring_jpa = bluetape4k("spring-jpa")
-    val bluetape4k_spring_r2dbc = bluetape4k("spring-r2dbc")
-    val bluetape4k_spring_retrofit2 = bluetape4k("spring-retrofit2")
-    // val bluetape4k_spring_security = bluetape4k("spring-security")
-    val bluetape4k_spring_tests = bluetape4k("spring-tests")
-    val bluetape4k_spring_webflux = bluetape4k("spring-webflux")
+    // Spring Boot 3
+    val bluetape4k_spring_boot3_core = bluetape4k("spring-boot3-core")
+    val bluetape4k_spring_boot3_cassandra = bluetape4k("spring-boot3-cassandra")
+    val bluetape4k_spring_boot3_mongodb = bluetape4k("spring-boot3-mongodb")
+    val bluetape4k_spring_boot3_r2dbc = bluetape4k("spring-boot3-r2dbc")
+    val bluetape4k_spring_boot3_redis = bluetape4k("spring-boot3-redis")
 
-    // Timefold Solver
-    val bluetape4k_timefold_solver_persistence_exposed = bluetape4k("timefold-solver-persistence-exposed")
+    // Spring Boot 4
+    val bluetape4k_spring_boot4_core = bluetape4k("spring-boot4-core")
+    val bluetape4k_spring_boot4_cassandra = bluetape4k("spring-boot4-cassandra")
+    val bluetape4k_spring_boot4_mongodb = bluetape4k("spring-boot4-mongodb")
+    val bluetape4k_spring_boot4_r2dbc = bluetape4k("spring-boot4-r2dbc")
+    val bluetape4k_spring_boot4_redis = bluetape4k("spring-boot4-redis")
 
     // AWS
-    val bluetape4k_aws_core = bluetape4k("aws-core")
-    // val bluetape4k_aws_dynamodb = bluetape4k("aws-dynamodb")
-    val bluetape4k_aws_s3 = bluetape4k("aws-s3")
-    // val bluetape4k_aws_ses = bluetape4k("aws-ses")
-    val bluetape4k_aws_sqs = bluetape4k("aws-sqs")
+    val bluetape4k_aws = bluetape4k("aws")
+    val bluetape4k_aws_kotlin = bluetape4k("aws-kotlin")
 
     // UTILS
-    val bluetape4k_captcha = bluetape4k("captcha")
-    val bluetape4k_geocode = bluetape4k("geocode")
-    val bluetape4k_geohash = bluetape4k("geohash")
-    val bluetape4k_geoip2 = bluetape4k("geoip2")
+    val bluetape4k_geo = bluetape4k("geo")
     val bluetape4k_idgenerators = bluetape4k("idgenerators")
     val bluetape4k_images = bluetape4k("images")
     val bluetape4k_javatimes = bluetape4k("javatimes")
     val bluetape4k_jwt = bluetape4k("jwt")
+    val bluetape4k_leader = bluetape4k("leader")
     val bluetape4k_math = bluetape4k("math")
-    val bluetape4k_mutiny = bluetape4k("mutiny")
+    val bluetape4k_measured = bluetape4k("measured")
     val bluetape4k_money = bluetape4k("money")
-    val bluetape4k_times = bluetape4k("times")
-    val bluetape4k_units = bluetape4k("unit")
+    val bluetape4k_mutiny = bluetape4k("mutiny")
 
-    // VERTX
-    val bluetape4k_vertx_core = bluetape4k("vertx-core")
-    val bluetape4k_vertx_resilience4j = bluetape4k("vertx-resilience4j")
-    val bluetape4k_vertx_sqlclient = bluetape4k("vertx-sqlclient")
+
 
     // kotlin
     fun kotlin(module: String, version: String = Versions.kotlin) = "org.jetbrains.kotlin:kotlin-$module:$version"

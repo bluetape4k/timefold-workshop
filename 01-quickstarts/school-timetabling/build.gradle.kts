@@ -22,11 +22,10 @@ dependencies {
     testImplementation(Libs.timefold_solver_test)
 
     // Bluetape4k
-    implementation(Libs.bluetape4k_jackson)
+    implementation(Libs.bluetape4k_jackson2)
     implementation(Libs.bluetape4k_idgenerators)
     implementation(Libs.bluetape4k_io)
-    implementation(Libs.bluetape4k_spring_webflux)
-    testImplementation(Libs.bluetape4k_spring_tests)
+    implementation(Libs.bluetape4k_spring_boot3_core)
     testImplementation(Libs.bluetape4k_junit5)
     testImplementation(Libs.bluetape4k_testcontainers)
 

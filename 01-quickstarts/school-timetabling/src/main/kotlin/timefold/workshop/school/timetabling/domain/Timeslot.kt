@@ -3,7 +3,7 @@ package timefold.workshop.school.timetabling.domain
 import ai.timefold.solver.core.api.domain.lookup.PlanningId
 import com.fasterxml.jackson.annotation.JsonIdentityInfo
 import com.fasterxml.jackson.annotation.ObjectIdGenerators
-import io.bluetape4k.idgenerators.uuid.TimebasedUuid
+import io.bluetape4k.idgenerators.uuid.Uuid
 import java.io.Serializable
 import java.time.DayOfWeek
 import java.time.LocalTime
@@ -15,7 +15,7 @@ import java.time.LocalTime
 )
 data class Timeslot(
     @PlanningId
-    val id: String = TimebasedUuid.Epoch.nextIdAsString(),
+    val id: String = Uuid.V7.nextIdAsString(),
     var dayOfWeek: DayOfWeek = DayOfWeek.MONDAY,
     var startTime: LocalTime = LocalTime.of(8, 0),
     var endTime: LocalTime = startTime.plusMinutes(50),

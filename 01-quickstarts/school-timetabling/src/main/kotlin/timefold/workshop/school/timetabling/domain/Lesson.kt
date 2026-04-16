@@ -4,14 +4,14 @@ import ai.timefold.solver.core.api.domain.entity.PlanningEntity
 import ai.timefold.solver.core.api.domain.lookup.PlanningId
 import ai.timefold.solver.core.api.domain.variable.PlanningVariable
 import com.fasterxml.jackson.annotation.JsonIdentityReference
-import io.bluetape4k.idgenerators.uuid.TimebasedUuid
+import io.bluetape4k.idgenerators.uuid.Uuid
 import io.bluetape4k.support.requireNotBlank
 import java.io.Serializable
 
 @PlanningEntity
 data class Lesson(
     @PlanningId
-    val id: String = TimebasedUuid.Epoch.nextIdAsString(),
+    val id: String = Uuid.V7.nextIdAsString(),
     val subject: String = "subject-$id",
     val teacher: String = "teacher-$id",
     val studentGroup: String = "studentGroup-$id",

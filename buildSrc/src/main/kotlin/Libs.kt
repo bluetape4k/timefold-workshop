@@ -16,15 +16,15 @@ object Plugins {
         const val jarTest = "1.0.1"
         const val testLogger = "4.0.0"
         const val shadow = "9.2.2"              // https://plugins.gradle.org/plugin/com.gradleup.shadow
-        const val kotlinx_benchmark = "0.4.14" // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-benchmark-plugin
+        const val kotlinx_benchmark = "0.4.15" // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-benchmark-plugin
 
         const val spring_boot = "3.5.13"  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
         const val docker_compose = "0.17.19"  // https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
 
         // 참고: https://docs.gatling.io/reference/integrations/build-tools/gradle-plugin/
-        const val gatling = "3.14.9"  // https://plugins.gradle.org/plugin/io.gatling.gradle
+        const val gatling = "3.15.0.1"  // https://plugins.gradle.org/plugin/io.gatling.gradle
 
-        const val graalvm_native = "0.11.3" // https://mvnrepository.com/artifact/org.graalvm.buildtools.native/org.graalvm.buildtools.native.gradle.plugin
+        const val graalvm_native = "1.0.0" // https://mvnrepository.com/artifact/org.graalvm.buildtools.native/org.graalvm.buildtools.native.gradle.plugin
     }
 
     const val detekt = "io.gitlab.arturbosch.detekt"
@@ -63,13 +63,13 @@ object Plugins {
 object Versions {
 
     // Java 21, Kotlin 2.0 이상에서 사용하세요
-    const val bluetape4k = "1.5.0"    // Bluetape4k Github Package 로 배포됩니다.
+    const val bluetape4k = "1.6.2"    // Bluetape4k Github Package 로 배포됩니다.
 
     const val timefold_solver = "1.32.0" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
 
     const val kotlin = "2.3.20"                 // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib
     const val kotlinx_coroutines = "1.10.2"      // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
-    const val kotlinx_serialization = "1.9.0"   // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm
+    const val kotlinx_serialization = "1.11.0"   // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm
 
     const val kotlinx_benchmark = Plugins.Versions.kotlinx_benchmark
 
@@ -116,8 +116,9 @@ object Versions {
     const val okio = "3.16.2"         // https://mvnrepository.com/artifact/com.squareup.okio/okio
     const val asynchttpclient = "2.12.4"  // https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client
 
-    const val jackson = "2.20.1" // https://mvnrepository.com/artifact/com.fasterxml.jackson/jackson-bom
-    const val jackson3 = "3.0.3" // https://mvnrepository.com/artifact/tools.jackson/jackson-bom
+    const val jackson_annotations = "2.21" // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
+    const val jackson = "2.21.2" // https://mvnrepository.com/artifact/com.fasterxml.jackson/jackson-bom
+    const val jackson3 = "3.1.2" // https://mvnrepository.com/artifact/tools.jackson/jackson-bom
     const val fastjson2 = "2.0.60" // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
     const val jjwt = "0.11.5"    // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
 
@@ -232,7 +233,6 @@ object Libs {
 
     const val jetbrains_annotations = "org.jetbrains:annotations:26.1.0" // https://mvnrepository.com/artifact/org.jetbrains/annotations
 
-
     // bluetape4k
     fun bluetape4k(module: String, version: String = Versions.bluetape4k) = "io.github.bluetape4k:bluetape4k-$module:$version"
 
@@ -273,6 +273,7 @@ object Libs {
 
     val bluetape4k_exposed = bluetape4k("exposed")
     val bluetape4k_exposed_bigquery = bluetape4k("exposed-bigquery")
+    val bluetape4k_exposed_cache = bluetape4k("exposed-cache")
     val bluetape4k_exposed_core = bluetape4k("exposed-core")
     val bluetape4k_exposed_dao = bluetape4k("exposed-dao")
     val bluetape4k_exposed_duckdb = bluetape4k("exposed-duckdb")
@@ -281,6 +282,7 @@ object Libs {
     val bluetape4k_exposed_jackson2 = bluetape4k("exposed-jackson2")
     val bluetape4k_exposed_jackson3 = bluetape4k("exposed-jackson3")
     val bluetape4k_exposed_jasypt = bluetape4k("exposed-jasypt")
+    val bluetape4k_exposed_jdbc_caffeine = bluetape4k("exposed-jdbc-caffeine")
     val bluetape4k_exposed_jdbc_lettuce = bluetape4k("exposed-jdbc-lettuce")
     val bluetape4k_exposed_jdbc_redisson = bluetape4k("exposed-jdbc-redisson")
     val bluetape4k_exposed_jdbc_tests = bluetape4k("exposed-jdbc-tests")
@@ -288,6 +290,7 @@ object Libs {
     val bluetape4k_exposed_mysql8 = bluetape4k("exposed-mysql8")
     val bluetape4k_exposed_postgresql = bluetape4k("exposed-postgresql")
     val bluetape4k_exposed_r2dbc = bluetape4k("exposed-r2dbc")
+    val bluetape4k_exposed_r2dbc_caffeine = bluetape4k("exposed-r2dbc-caffeine")
     val bluetape4k_exposed_r2dbc_lettuce = bluetape4k("exposed-r2dbc-lettuce")
     val bluetape4k_exposed_r2dbc_redisson = bluetape4k("exposed-r2dbc-redisson")
     val bluetape4k_exposed_r2dbc_tests = bluetape4k("exposed-r2dbc-tests")
@@ -318,6 +321,7 @@ object Libs {
     val bluetape4k_resilience4j = bluetape4k("resilience4j")
 
     // Spring Boot 3
+    val bluetape4k_spring_boot3_batch_exposed = bluetape4k("spring-boot3-batch-exposed")
     val bluetape4k_spring_boot3_core = bluetape4k("spring-boot3-core")
     val bluetape4k_spring_boot3_cassandra = bluetape4k("spring-boot3-cassandra")
     val bluetape4k_spring_boot3_exposed_jdbc = bluetape4k("spring-boot3-exposed-jdbc")
@@ -328,6 +332,7 @@ object Libs {
     val bluetape4k_spring_boot3_redis = bluetape4k("spring-boot3-redis")
 
     // Spring Boot 4
+    val bluetape4k_spring_boot4_batch_exposed = bluetape4k("spring-boot4-batch-exposed")
     val bluetape4k_spring_boot4_core = bluetape4k("spring-boot4-core")
     val bluetape4k_spring_boot4_cassandra = bluetape4k("spring-boot4-cassandra")
     val bluetape4k_spring_boot4_exposed_jdbc = bluetape4k("spring-boot4-exposed-jdbc")
@@ -342,6 +347,7 @@ object Libs {
     val bluetape4k_aws_kotlin = bluetape4k("aws-kotlin")
 
     // UTILS
+    val bluetape4k_batch = bluetape4k("batch")
     val bluetape4k_geo = bluetape4k("geo")
     val bluetape4k_idgenerators = bluetape4k("idgenerators")
     val bluetape4k_images = bluetape4k("images")
@@ -950,7 +956,7 @@ object Libs {
 
     fun jacksonCore(module: String, version: String = Versions.jackson) = jackson("core", module, version)
 
-    val jackson_annotations = jacksonCore("annotations")
+    val jackson_annotations = jacksonCore("annotations", Versions.jackson_annotations)
     val jackson_core = jacksonCore("core")
     val jackson_databind = jacksonCore("databind")
 

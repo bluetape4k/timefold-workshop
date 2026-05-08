@@ -2,9 +2,9 @@ package io.bluetape4k.timefold.dsl
 
 import io.bluetape4k.logging.coroutines.KLoggingChannel
 import io.bluetape4k.timefold.AbstractTimefoldTest
-import org.amshove.kluent.shouldBeEqualTo
-import org.amshove.kluent.shouldContain
-import org.amshove.kluent.shouldHaveSize
+import io.bluetape4k.assertions.shouldBeEqualTo
+import io.bluetape4k.assertions.shouldContain
+import io.bluetape4k.assertions.shouldHaveSize
 import org.junit.jupiter.api.Test
 
 class TimefoldDslTest: AbstractTimefoldTest() {

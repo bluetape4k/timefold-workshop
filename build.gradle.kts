@@ -348,7 +348,7 @@ subprojects {
             dependency(Libs.junit_platform_launcher)
             dependency(Libs.junit_platform_runner)
 
-            dependency(Libs.kluent)
+            dependency(Libs.bluetape4k_assertions)
             dependency(Libs.assertj_core)
 
             dependency(Libs.mockk)
@@ -417,7 +417,7 @@ subprojects {
         testImplementation(Libs.junit_jupiter)
         testRuntimeOnly(Libs.junit_platform_engine)
 
-        testImplementation(Libs.kluent)
+        testImplementation(Libs.bluetape4k_assertions)
         testImplementation(Libs.mockk)
         testImplementation(Libs.awaitility_kotlin)
 

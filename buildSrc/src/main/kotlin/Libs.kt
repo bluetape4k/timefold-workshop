@@ -63,7 +63,7 @@ object Plugins {
 object Versions {
 
     // Java 21, Kotlin 2.0 이상에서 사용하세요
-    const val bluetape4k = "1.6.2"    // Bluetape4k Github Package 로 배포됩니다.
+    const val bluetape4k = "1.8.0-SNAPSHOT"    // Bluetape4k Github Package 로 배포됩니다.
 
     const val timefold_solver = "1.32.0" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
 
@@ -183,7 +183,7 @@ object Versions {
     const val junit_jupiter = "6.0.2"      // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
     const val junit_platform = "6.0.2"     // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
     const val assertj_core = "3.27.6"       // https://mvnrepository.com/artifact/org.assertj/assertj-core
-    const val kluent = "1.73"               // https://mvnrepository.com/artifact/org.amshove.kluent/kluent
+    // kluent removed - use bluetape4k-assertions instead
     const val mockk = "1.14.7"              // https://mvnrepository.com/artifact/io.mockk/mockk
     const val springmockk = "4.0.2"         // https://mvnrepository.com/artifact/com.ninja-squad/springmockk
     const val awaitility = "4.3.0"          // https://mvnrepository.com/artifact/org.awaitility/awaitility
@@ -1489,7 +1489,7 @@ object Libs {
 
     const val junit_vintage_engine = "org.junit.vintage:junit-vintage-engine:${Versions.junit_jupiter}"
 
-    const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
+    val bluetape4k_assertions = bluetape4k("assertions")
     const val assertj_core = "org.assertj:assertj-core:${Versions.assertj_core}"
 
     const val mockk = "io.mockk:mockk:${Versions.mockk}"

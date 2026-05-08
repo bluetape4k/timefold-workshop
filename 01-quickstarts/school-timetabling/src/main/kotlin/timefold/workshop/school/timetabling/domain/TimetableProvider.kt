@@ -1,6 +1,6 @@
 package timefold.workshop.school.timetabling.domain
 
-import io.bluetape4k.idgenerators.uuid.TimebasedUuid
+import io.bluetape4k.idgenerators.uuid.Uuid
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import java.time.DayOfWeek
@@ -32,7 +32,7 @@ object TimetableProvider {
     ): List<Timeslot> {
         return startHours
             .map {
-                val slotId = TimebasedUuid.Epoch.nextIdAsString()
+                val slotId = Uuid.V7.nextIdAsString()
                 val startTime = LocalTime.of(it, 30)
                 Timeslot(
                     id = slotId,
@@ -201,5 +201,5 @@ object TimetableProvider {
     }
 
     private fun generateUniqueId(): String =
-        TimebasedUuid.Epoch.nextIdAsString()
+        Uuid.V7.nextIdAsString()
 }

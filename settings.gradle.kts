@@ -14,6 +14,8 @@ val PROJECT_NAME = "timefold"
 
 rootProject.name = "$PROJECT_NAME-workshop"
 
+includeModules("exposed", withProjectName = false, withBaseDir = true)
+
 includeModules("00-shared", withProjectName = false, withBaseDir = false)
 includeModules("01-quickstarts", withProjectName = false, withBaseDir = false)
 

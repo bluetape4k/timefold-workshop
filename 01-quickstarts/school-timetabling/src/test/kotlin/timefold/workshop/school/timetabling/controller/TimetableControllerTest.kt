@@ -44,7 +44,7 @@ import kotlin.time.Duration.Companion.seconds
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
 )
 class TimetableControllerTest(
-    @Autowired private val testClient: WebTestClient,
+    @param:Autowired private val testClient: WebTestClient,
 ): AbstractSchoolTimetablingTest() {
 
     private val client: WebTestClient

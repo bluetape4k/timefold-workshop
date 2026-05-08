@@ -23,9 +23,9 @@ class DemoDataGenerator {
 
         // Department
         val dept1 = Department(id = "1", name = "Department")
-        dept1.specialtyToPriority.put(SPECIALTIES[0], 1)
-        dept1.specialtyToPriority.put(SPECIALTIES[1], 2)
-        dept1.specialtyToPriority.put(SPECIALTIES[2], 3)
+        dept1.specialtyToPriority[SPECIALTIES[0]] = 1
+        dept1.specialtyToPriority[SPECIALTIES[1]] = 2
+        dept1.specialtyToPriority[SPECIALTIES[2]] = 3
         schedule.departments.add(dept1)
 
         // Rooms
@@ -33,8 +33,6 @@ class DemoDataGenerator {
         val rooms = generateRooms(countRooms, schedule.departments)
         schedule.departments[0].rooms.addAll(rooms)
         schedule.rooms.addAll(rooms)
-
-
 
         return schedule
     }

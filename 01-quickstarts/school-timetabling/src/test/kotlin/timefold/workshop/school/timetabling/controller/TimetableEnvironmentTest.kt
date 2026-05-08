@@ -18,8 +18,8 @@ import java.time.Duration
 import kotlin.time.Duration.Companion.minutes
 
 class TimetableEnvironmentTest(
-    @Autowired private val client: WebTestClient,
-    @Autowired private val solverConfig: SolverConfig,
+    @param:Autowired private val client: WebTestClient,
+    @param:Autowired private val solverConfig: SolverConfig,
 ): AbstractSchoolTimetablingTest() {
 
     @Test

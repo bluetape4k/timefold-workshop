@@ -3,7 +3,7 @@ package timefold.workshop.school.timetabling.domain
 import ai.timefold.solver.core.api.domain.lookup.PlanningId
 import com.fasterxml.jackson.annotation.JsonIdentityInfo
 import com.fasterxml.jackson.annotation.ObjectIdGenerators
-import io.bluetape4k.idgenerators.uuid.TimebasedUuid
+import io.bluetape4k.idgenerators.uuid.Uuid
 import java.io.Serializable
 
 @JsonIdentityInfo(
@@ -13,7 +13,7 @@ import java.io.Serializable
 )
 data class Room(
     @PlanningId
-    val id: String = TimebasedUuid.Epoch.nextIdAsString(),
+    val id: String = Uuid.V7.nextIdAsString(),
     val name: String = "Room-$id",
 ): Serializable {
 

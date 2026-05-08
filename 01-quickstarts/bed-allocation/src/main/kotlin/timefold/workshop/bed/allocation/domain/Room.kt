@@ -4,7 +4,7 @@ import ai.timefold.solver.core.api.domain.lookup.PlanningId
 import com.fasterxml.jackson.annotation.JsonIdentityInfo
 import com.fasterxml.jackson.annotation.ObjectIdGenerators
 import io.bluetape4k.AbstractValueObject
-import io.bluetape4k.idgenerators.uuid.TimebasedUuid
+import io.bluetape4k.idgenerators.uuid.Uuid
 
 /**
  * 병원의 병실([Room]) 나타내는 클래스입니다. 병상([Bed])를 포함하고 있으며, 병실의 이름, 병과, 수용 인원, 성별 제한 등을 포함합니다.
@@ -16,7 +16,7 @@ import io.bluetape4k.idgenerators.uuid.TimebasedUuid
 )
 data class Room(
     @PlanningId
-    var id: String = TimebasedUuid.Epoch.nextIdAsString(),
+    var id: String = Uuid.V7.nextIdAsString(),
     var name: String = "room-$id",
     var department: Department? = null,
     var capacity: Int? = null,
@@ -30,5 +30,9 @@ data class Room(
             beds.add(bed)
             bed.room = this
         }
+    }
+
+    override fun equalProperties(other: Any): Boolean {
+        return other is Room && id == other.id
     }
 }

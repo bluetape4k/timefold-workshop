@@ -1,4 +1,6 @@
 dependencies {
+    implementation(Libs.timefold_solver_bom)
+    
     api(Libs.timefold_solver_core)
     testImplementation(Libs.timefold_solver_test)
 

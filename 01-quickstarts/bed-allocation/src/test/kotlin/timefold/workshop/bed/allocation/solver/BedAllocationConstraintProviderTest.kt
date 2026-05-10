@@ -2,7 +2,7 @@ package timefold.workshop.bed.allocation.solver
 
 import ai.timefold.solver.test.api.score.stream.ConstraintVerifier
 import io.bluetape4k.logging.coroutines.KLoggingChannel
-import org.amshove.kluent.shouldNotBeNull
+import io.bluetape4k.assertions.shouldNotBeNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.condition.DisabledInNativeImage
 import org.springframework.beans.factory.annotation.Autowired

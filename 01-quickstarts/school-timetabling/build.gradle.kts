@@ -22,15 +22,15 @@ dependencies {
     testImplementation(Libs.timefold_solver_test)
 
     // Bluetape4k
-    implementation(Libs.bluetape4k_jackson2)
-    implementation(Libs.bluetape4k_idgenerators)
-    implementation(Libs.bluetape4k_io)
-    implementation(Libs.bluetape4k_spring_boot3_core)
-    testImplementation(Libs.bluetape4k_junit5)
-    testImplementation(Libs.bluetape4k_testcontainers)
+    implementation(libs.bluetape4k.jackson2)
+    implementation(libs.bluetape4k.idgenerators)
+    implementation(libs.bluetape4k.io)
+    implementation(libs.bluetape4k.spring.boot3.core)
+    testImplementation(libs.bluetape4k.junit5)
+    testImplementation(libs.bluetape4k.testcontainers)
 
     // Coroutines
-    implementation(Libs.bluetape4k_coroutines)
+    implementation(libs.bluetape4k.coroutines)
     implementation(Libs.kotlinx_coroutines_reactor)
     testImplementation(Libs.kotlinx_coroutines_test)
 

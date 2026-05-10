@@ -7,16 +7,16 @@ dependencies {
 
     implementation(Libs.exposed_jdbc)
     implementation(Libs.exposed_dao)
-    implementation(Libs.bluetape4k_exposed)
+    implementation(libs.bluetape4k.exposed.core)
 
     // Timefold Solver의 Score 에 대해 Exposed 용 Custom Column Types 제공
-    implementation(Libs.bluetape4k_timefold_solver_persistence_exposed)
+    implementation(libs.bluetape4k.timefold.solver.persistence.exposed)
 
-    testImplementation(Libs.bluetape4k_exposed_jdbc_tests)
+    testImplementation(libs.bluetape4k.exposed.jdbc.tests)
 
-    testImplementation(Libs.bluetape4k_io)
-    testImplementation(Libs.bluetape4k_coroutines)
-    testImplementation(Libs.bluetape4k_junit5)
+    testImplementation(libs.bluetape4k.io)
+    testImplementation(libs.bluetape4k.coroutines)
+    testImplementation(libs.bluetape4k.junit5)
 
     testImplementation(Libs.hikaricp)
 
@@ -26,7 +26,7 @@ dependencies {
     testImplementation(Libs.postgresql_driver)
     testImplementation(Libs.pgjdbc_ng)
 
-    testImplementation(Libs.bluetape4k_testcontainers)
+    testImplementation(libs.bluetape4k.testcontainers)
     testImplementation(Libs.testcontainers)
     testImplementation(Libs.testcontainers_mariadb)
     testImplementation(Libs.testcontainers_mysql)

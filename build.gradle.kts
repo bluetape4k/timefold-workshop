@@ -19,6 +19,8 @@ plugins {
     id(Plugins.graalvm_native) version Plugins.Versions.graalvm_native apply false
 }
 
+val rootLibs = libs
+
 // NOTE: Github 에 등록된 Package 를 다운받기 위해서 사용합니다.
 // NOTE: ~/.gradle/gradle.properties gpr.user,gpr.key 를 정의하던가
 // NOTE: ~/.zshrc 에 GITHUB_USERNAME, GITHUB_TOKEN 을 정의합니다.
@@ -42,7 +44,7 @@ allprojects {
 
     // bluetape4k snapshot 버전 사용 시만 사용하세요.
     configurations.all {
-        resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.DAYS)
+        resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
     }
 }
 
@@ -156,7 +158,7 @@ subprojects {
         setApplyMavenExclusions(false)
 
         imports {
-            mavenBom(Libs.bluetape4k_bom)
+            mavenBom(rootLibs.bluetape4k.bom.get().toString())
             mavenBom(Libs.spring_integration_bom)
             mavenBom(Libs.spring_cloud_dependencies)
             mavenBom(Libs.spring_boot_dependencies)
@@ -348,7 +350,6 @@ subprojects {
             dependency(Libs.junit_platform_launcher)
             dependency(Libs.junit_platform_runner)
 
-            dependency(Libs.bluetape4k_assertions)
             dependency(Libs.assertj_core)
 
             dependency(Libs.mockk)
@@ -392,7 +393,7 @@ subprojects {
         val testCompileOnly by configurations
         val testRuntimeOnly by configurations
 
-        compileOnly(platform(Libs.bluetape4k_bom))
+        compileOnly(platform(rootLibs.bluetape4k.bom))
         compileOnly(platform(Libs.spring_boot_dependencies))
         compileOnly(platform(Libs.jackson_bom))
         compileOnly(platform(Libs.kotlinx_coroutines_bom))
@@ -406,18 +407,17 @@ subprojects {
 
         // 개발 시에는 logback 이 검증하기에 더 좋고, Production에서 비동기 로깅은 log4j2 가 성능이 좋다고 합니다.
         api(Libs.slf4j_api)
-        api(Libs.bluetape4k_logging)
+        api(rootLibs.bluetape4k.logging)
         implementation(Libs.logback)
         testImplementation(Libs.jcl_over_slf4j)
         testImplementation(Libs.jul_to_slf4j)
         testImplementation(Libs.log4j_over_slf4j)
 
         // JUnit 5
-        testImplementation(Libs.bluetape4k_junit5)
+        testImplementation(rootLibs.bluetape4k.junit5)
         testImplementation(Libs.junit_jupiter)
         testRuntimeOnly(Libs.junit_platform_engine)
 
-        testImplementation(Libs.bluetape4k_assertions)
         testImplementation(Libs.mockk)
         testImplementation(Libs.awaitility_kotlin)
 

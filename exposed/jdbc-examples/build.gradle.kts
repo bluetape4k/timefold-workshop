@@ -7,12 +7,12 @@ dependencies {
 
     implementation(Libs.exposed_jdbc)
     implementation(Libs.exposed_dao)
-    implementation(libs.bluetape4k.exposed.core)
+    implementation(libs.exposed.dao)
 
     // Timefold Solver의 Score 에 대해 Exposed 용 Custom Column Types 제공
     implementation(libs.bluetape4k.timefold.solver.persistence.exposed)
 
-    testImplementation(libs.bluetape4k.exposed.jdbc.tests)
+    testImplementation(libs.exposed.jdbc.tests)
 
     testImplementation(libs.bluetape4k.io)
     testImplementation(libs.bluetape4k.coroutines)

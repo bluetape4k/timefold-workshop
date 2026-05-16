@@ -6,8 +6,8 @@ dependencies {
     testImplementation(Libs.timefold_solver_test)
 
     implementation(Libs.exposed_r2dbc)
-    implementation(libs.bluetape4k.exposed.r2dbc)
-    testImplementation(libs.bluetape4k.exposed.r2dbc.tests)
+    implementation(libs.exposed.r2dbc)
+    testImplementation(libs.exposed.r2dbc.tests)
 
     // Timefold Solver의 Score 에 대해 Exposed 용 Custom Column Types 제공
     implementation(libs.bluetape4k.timefold.solver.persistence.exposed)

@@ -21,15 +21,6 @@ plugins {
 
 val rootLibs = libs
 
-// NOTE: Github 에 등록된 Package 를 다운받기 위해서 사용합니다.
-// NOTE: ~/.gradle/gradle.properties gpr.user,gpr.key 를 정의하던가
-// NOTE: ~/.zshrc 에 GITHUB_USERNAME, GITHUB_TOKEN 을 정의합니다.
-fun getEnvOrProjectProperty(propertyKey: String, envKey: String): String {
-    return project.findProperty(propertyKey) as? String ?: System.getenv(envKey)
-}
-
-val bluetape4kGprKey: String = getEnvOrProjectProperty("bluetape4k.gpr.key", "BLUETAPE4K_GITHUB_TOKEN")
-
 allprojects {
     repositories {
         mavenCentral()

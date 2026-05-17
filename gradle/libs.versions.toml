@@ -4,11 +4,11 @@ bluetape4k = "1.8.0-SNAPSHOT"
 [libraries]
 bluetape4k-bom = { module = "io.github.bluetape4k:bluetape4k-bom", version.ref = "bluetape4k" }
 bluetape4k-coroutines = { module = "io.github.bluetape4k:bluetape4k-coroutines", version.ref = "bluetape4k" }
-exposed-core = { module = "io.github.bluetape4k.exposed:exposed-core", version.ref = "bluetape4k" }
-exposed-dao = { module = "io.github.bluetape4k.exposed:exposed-dao", version.ref = "bluetape4k" }
-exposed-jdbc-tests = { module = "io.github.bluetape4k.exposed:exposed-jdbc-tests", version.ref = "bluetape4k" }
-exposed-r2dbc = { module = "io.github.bluetape4k.exposed:exposed-r2dbc", version.ref = "bluetape4k" }
-exposed-r2dbc-tests = { module = "io.github.bluetape4k.exposed:exposed-r2dbc-tests", version.ref = "bluetape4k" }
+exposed-core = { module = "io.github.bluetape4k.exposed:bluetape4k-exposed-core", version.ref = "bluetape4k" }
+exposed-dao = { module = "io.github.bluetape4k.exposed:bluetape4k-exposed-dao", version.ref = "bluetape4k" }
+exposed-jdbc-tests = { module = "io.github.bluetape4k.exposed:bluetape4k-exposed-jdbc-tests", version.ref = "bluetape4k" }
+exposed-r2dbc = { module = "io.github.bluetape4k.exposed:bluetape4k-exposed-r2dbc", version.ref = "bluetape4k" }
+exposed-r2dbc-tests = { module = "io.github.bluetape4k.exposed:bluetape4k-exposed-r2dbc-tests", version.ref = "bluetape4k" }
 bluetape4k-idgenerators = { module = "io.github.bluetape4k:bluetape4k-idgenerators", version.ref = "bluetape4k" }
 bluetape4k-io = { module = "io.github.bluetape4k:bluetape4k-io", version.ref = "bluetape4k" }
 bluetape4k-jackson2 = { module = "io.github.bluetape4k:bluetape4k-jackson2", version.ref = "bluetape4k" }

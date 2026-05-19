@@ -25,20 +25,7 @@ conflicts, respecting resource constraints, and balancing soft preferences.
 
 ## Architecture
 
-```mermaid
-graph TD
-    shared[00-shared/bluetape4k-timefold\nShared helpers and test support]
-    quickstarts[01-quickstarts\nTimefold quickstart domains]
-    exposed[exposed\nJDBC/R2DBC persistence examples]
-    solver[Timefold Solver\nConstraint streams and score calculation]
-    store[(Database)]
-
-    shared --> quickstarts
-    shared --> exposed
-    quickstarts --> solver
-    exposed --> solver
-    exposed --> store
-```
+![Architecture diagram](docs/assets/readme-diagrams/timefold-workshop-architecture-01.png)
 
 ## Modules
 

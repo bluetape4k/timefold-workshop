@@ -23,20 +23,7 @@
 
 ## 아키텍처
 
-```mermaid
-graph TD
-    shared[00-shared/bluetape4k-timefold\n공통 헬퍼와 테스트 지원]
-    quickstarts[01-quickstarts\nTimefold quickstart 도메인]
-    exposed[exposed\nJDBC/R2DBC 영속성 예제]
-    solver[Timefold Solver\nConstraint streams와 score 계산]
-    store[(Database)]
-
-    shared --> quickstarts
-    shared --> exposed
-    quickstarts --> solver
-    exposed --> solver
-    exposed --> store
-```
+![Architecture diagram](docs/assets/readme-diagrams/timefold-workshop-architecture-01.png)
 
 ## 모듈
 

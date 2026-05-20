@@ -25,7 +25,7 @@ conflicts, respecting resource constraints, and balancing soft preferences.
 
 ## Architecture
 
-![Architecture diagram](docs/assets/readme-diagrams/timefold-workshop-architecture-01.png)
+![timefold workshop Architecture diagram](docs/assets/readme-diagrams/timefold-workshop-architecture-01.png)
 
 ## Modules
 

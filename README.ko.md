@@ -23,7 +23,7 @@
 
 ## 아키텍처
 
-![Architecture diagram](docs/assets/readme-diagrams/timefold-workshop-architecture-01.png)
+![timefold workshop Architecture diagram](docs/assets/readme-diagrams/timefold-workshop-architecture-01.png)
 
 ## 모듈
 

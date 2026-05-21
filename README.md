@@ -23,6 +23,16 @@ conflicts, respecting resource constraints, and balancing soft preferences.
 - **Exposed persistence examples** for JDBC/R2DBC-backed solver applications.
 - **Constraint-focused tests** that prove scheduling behavior.
 
+<!-- README_VISUAL_OVERVIEW:START -->
+## Overview Diagram
+
+![Timefold Workshop overview diagram](docs/assets/readme-diagrams/root-readme-overview-01.png)
+
+## Module Composition Chart
+
+![Timefold Workshop module composition chart](docs/assets/readme-charts/root-readme-module-chart-01.png)
+<!-- README_VISUAL_OVERVIEW:END -->
+
 ## Architecture
 
 ![timefold workshop Architecture diagram](docs/assets/readme-diagrams/timefold-workshop-architecture-01.png)

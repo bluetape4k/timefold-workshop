@@ -149,7 +149,7 @@ subprojects {
         setApplyMavenExclusions(false)
 
         imports {
-            mavenBom(rootLibs.bluetape4k.bom.get().toString())
+            mavenBom(rootLibs.bluetape4k.dependencies.get().toString())
             mavenBom(Libs.spring_integration_bom)
             mavenBom(Libs.spring_cloud_dependencies)
             mavenBom(Libs.spring_boot_dependencies)
@@ -384,7 +384,7 @@ subprojects {
         val testCompileOnly by configurations
         val testRuntimeOnly by configurations
 
-        compileOnly(platform(rootLibs.bluetape4k.bom))
+        compileOnly(platform(rootLibs.bluetape4k.dependencies))
         compileOnly(platform(Libs.spring_boot_dependencies))
         compileOnly(platform(Libs.jackson_bom))
         compileOnly(platform(Libs.kotlinx_coroutines_bom))

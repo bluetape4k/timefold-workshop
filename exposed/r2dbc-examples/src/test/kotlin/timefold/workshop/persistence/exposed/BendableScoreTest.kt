@@ -1,6 +1,6 @@
 package timefold.workshop.persistence.exposed
 
-import ai.timefold.solver.core.api.score.buildin.bendable.BendableScore
+import ai.timefold.solver.core.api.score.BendableScore
 import io.bluetape4k.exposed.r2dbc.tests.TestDB
 import io.bluetape4k.exposed.r2dbc.tests.withTables
 import io.bluetape4k.junit5.coroutines.runSuspendIO
@@ -32,17 +32,17 @@ class BendableScoreTest: AbstractScoreExposedTest() {
 
             val name = faker.name().name()
             val bendable = BendableScore.of(
-                intArrayOf(
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
+                longArrayOf(
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
                 ),
-                intArrayOf(
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
+                longArrayOf(
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
                 )
             )
 

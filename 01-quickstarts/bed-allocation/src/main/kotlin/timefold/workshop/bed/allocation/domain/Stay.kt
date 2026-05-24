@@ -1,7 +1,7 @@
 package timefold.workshop.bed.allocation.domain
 
 import ai.timefold.solver.core.api.domain.entity.PlanningEntity
-import ai.timefold.solver.core.api.domain.lookup.PlanningId
+import ai.timefold.solver.core.api.domain.common.PlanningId
 import ai.timefold.solver.core.api.domain.variable.PlanningVariable
 import com.fasterxml.jackson.annotation.JsonIgnore
 import io.bluetape4k.idgenerators.uuid.TimebasedUuid
@@ -57,16 +57,16 @@ class Stay: Serializable {
 
 
     @get:JsonIgnore
-    val nightCount: Int
-        get() = ChronoUnit.DAYS.between(arrivalDate, departureDate).toInt() + 1
+    val nightCount: Long
+        get() = ChronoUnit.DAYS.between(arrivalDate, departureDate) + 1L
 
-    fun calculateSameNightCount(other: Stay): Int {
+    fun calculateSameNightCount(other: Stay): Long {
         val maxArrivalDate = maxOf(arrivalDate!!, other.arrivalDate!!)
         val minDepartureDate = minOf(departureDate!!, other.departureDate!!)
 
         return maxOf(
-            0,
-            ChronoUnit.DAYS.between(maxArrivalDate, minDepartureDate).toInt() + 1
+            0L,
+            ChronoUnit.DAYS.between(maxArrivalDate, minDepartureDate) + 1L
         )
     }
 

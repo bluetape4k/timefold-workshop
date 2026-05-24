@@ -1,6 +1,6 @@
 package timefold.workshop.persistence.exposed
 
-import ai.timefold.solver.core.api.score.buildin.simple.SimpleScore
+import ai.timefold.solver.core.api.score.SimpleScore
 import io.bluetape4k.exposed.r2dbc.tests.TestDB
 import io.bluetape4k.exposed.r2dbc.tests.withTables
 import io.bluetape4k.junit5.coroutines.runSuspendIO
@@ -31,7 +31,7 @@ class SimpleScoreTest: AbstractScoreExposedTest() {
         withTables(testDB, T1) {
 
             val name = faker.name().name()
-            val simpleScore = SimpleScore.of(faker.random().nextInt(0, 100))
+            val simpleScore = SimpleScore.of(faker.random().nextLong(0, 100))
 
             val id = T1.insertAndGetId {
                 it[T1.name] = name

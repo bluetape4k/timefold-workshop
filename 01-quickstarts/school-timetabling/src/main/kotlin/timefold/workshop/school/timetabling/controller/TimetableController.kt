@@ -1,7 +1,7 @@
 package timefold.workshop.school.timetabling.controller
 
 import ai.timefold.solver.core.api.score.analysis.ScoreAnalysis
-import ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore
+import ai.timefold.solver.core.api.score.HardSoftScore
 import ai.timefold.solver.core.api.solver.ScoreAnalysisFetchPolicy
 import ai.timefold.solver.core.api.solver.SolutionManager
 import ai.timefold.solver.core.api.solver.SolverManager
@@ -37,7 +37,7 @@ import java.util.concurrent.ConcurrentHashMap
 @RestController
 @RequestMapping("/timetables")
 class TimetableController(
-    private val solverManager: SolverManager<Timetable, String>,
+    private val solverManager: SolverManager<Timetable>,
     private val solutionManager: SolutionManager<Timetable, HardSoftScore>,
 ): CoroutineScope by CoroutineScope(Dispatchers.IO + CoroutineName("timetable")) {
 
@@ -67,13 +67,13 @@ class TimetableController(
         solverManager
             .solveBuilder()
             .withProblemId(jobId)
-            .withProblemFinder { jobIdToJob[it]!!.timetable }
+            .withProblemFinder { jobIdToJob[it.toString()]!!.timetable!! }
             .withBestSolutionEventConsumer { event ->
-                jobIdToJob[jobId] = Job.ofTimetable(event.solution())
+                jobIdToJob[jobId] = Job.ofTimetable(event.solution()!!)
             }
-            .withExceptionHandler { jobId, exception ->
-                jobIdToJob[jobId] = Job.ofException(exception)
-                log.error(exception) { "Solver failed for jobId: $jobId" }
+            .withExceptionHandler { id, exception ->
+                jobIdToJob[id.toString()] = Job.ofException(exception)
+                log.error(exception) { "Solver failed for jobId: $id" }
             }
             .run()
 

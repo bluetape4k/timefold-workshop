@@ -1,6 +1,6 @@
 package timefold.workshop.persistence.exposed
 
-import ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore
+import ai.timefold.solver.core.api.score.HardSoftScore
 import io.bluetape4k.exposed.dao.entityToStringBuilder
 import io.bluetape4k.exposed.dao.idEquals
 import io.bluetape4k.exposed.dao.idHashCode
@@ -51,8 +51,8 @@ class HardSoftScoreTest: AbstractScoreExposedTest() {
 
             val name = faker.name().name()
             val hardSoftScore = HardSoftScore.of(
-                faker.random().nextInt(),
-                faker.random().nextInt()
+                faker.random().nextLong(),
+                faker.random().nextLong()
             )
 
             val id = T1.insertAndGetId {
@@ -79,8 +79,8 @@ class HardSoftScoreTest: AbstractScoreExposedTest() {
             val saved = E1.new {
                 this.name = faker.name().name()
                 this.hardSoftScore = HardSoftScore.of(
-                    faker.random().nextInt(0, 100),
-                    faker.random().nextInt(1, 100)
+                    faker.random().nextLong(0, 100),
+                    faker.random().nextLong(1, 100)
                 )
             }
             log.debug { "saved=$saved" }

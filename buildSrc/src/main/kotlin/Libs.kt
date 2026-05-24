@@ -62,9 +62,6 @@ object Plugins {
 
 object Versions {
 
-    // Java 21, Kotlin 2.0 이상에서 사용하세요
-    const val bluetape4k = "1.8.0-SNAPSHOT"    // Bluetape4k Github Package 로 배포됩니다.
-
     const val timefold_solver = "1.32.0" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
 
     const val kotlin = "2.3.20"                 // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib

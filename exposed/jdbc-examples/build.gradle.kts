@@ -1,34 +1,34 @@
 dependencies {
-    implementation(Libs.timefold_solver_bom)
+    implementation(libs.timefold.solver.core)
+    implementation(libs.timefold.solver.persistence.common)
+    testImplementation(libs.timefold.solver.test)
 
-    implementation(Libs.timefold_solver_core)
-    implementation(Libs.timefold_solver_persistence_common)
-    testImplementation(Libs.timefold_solver_test)
+    // JetBrains Exposed core (version managed by jetbrains-exposed-bom)
+    implementation(libs.jetbrains.exposed.jdbc)
+    implementation(libs.jetbrains.exposed.dao)
 
-    implementation(Libs.exposed_jdbc)
-    implementation(Libs.exposed_dao)
+    // bluetape4k-exposed extensions (version managed by bluetape4k-dependencies BOM)
     implementation(libs.exposed.dao)
+    testImplementation(libs.exposed.jdbc.tests)
 
     // Timefold Solver의 Score 에 대해 Exposed 용 Custom Column Types 제공
     implementation(libs.bluetape4k.timefold.solver.persistence.exposed)
-
-    testImplementation(libs.exposed.jdbc.tests)
 
     testImplementation(libs.bluetape4k.io)
     testImplementation(libs.bluetape4k.coroutines)
     testImplementation(libs.bluetape4k.junit5)
 
-    testImplementation(Libs.hikaricp)
+    testImplementation(libs.hikaricp)
 
-    testImplementation(Libs.h2_v2)
-    testImplementation(Libs.mariadb_java_client)
-    testImplementation(Libs.mysql_connector_j)
-    testImplementation(Libs.postgresql_driver)
-    testImplementation(Libs.pgjdbc_ng)
+    testImplementation(libs.h2)
+    testImplementation(libs.mariadb.java.client)
+    testImplementation(libs.mysql.connector.j)
+    testImplementation(libs.postgresql.driver)
+    testImplementation(libs.pgjdbc.ng)
 
     testImplementation(libs.bluetape4k.testcontainers)
-    testImplementation(Libs.testcontainers)
-    testImplementation(Libs.testcontainers_mariadb)
-    testImplementation(Libs.testcontainers_mysql)
-    testImplementation(Libs.testcontainers_postgresql)
+    testImplementation(libs.testcontainers.lib)
+    testImplementation(libs.testcontainers.mariadb)
+    testImplementation(libs.testcontainers.mysql)
+    testImplementation(libs.testcontainers.postgresql)
 }

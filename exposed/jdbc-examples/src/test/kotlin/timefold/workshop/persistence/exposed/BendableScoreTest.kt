@@ -1,6 +1,6 @@
 package timefold.workshop.persistence.exposed
 
-import ai.timefold.solver.core.api.score.buildin.bendable.BendableScore
+import ai.timefold.solver.core.api.score.BendableScore
 import io.bluetape4k.exposed.dao.entityToStringBuilder
 import io.bluetape4k.exposed.dao.idEquals
 import io.bluetape4k.exposed.dao.idHashCode
@@ -51,17 +51,17 @@ class BendableScoreTest: AbstractScoreExposedTest() {
 
             val name = faker.name().name()
             val bendable = BendableScore.of(
-                intArrayOf(
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
+                longArrayOf(
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
                 ),
-                intArrayOf(
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
-                    faker.random().nextInt(),
+                longArrayOf(
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
+                    faker.random().nextLong(),
                 )
             )
 
@@ -89,17 +89,17 @@ class BendableScoreTest: AbstractScoreExposedTest() {
             val saved = E1.new {
                 this.name = faker.name().name()
                 this.bendable = BendableScore.of(
-                    intArrayOf(
-                        faker.random().nextInt(),
-                        faker.random().nextInt(),
-                        faker.random().nextInt(),
-                        faker.random().nextInt(),
+                    longArrayOf(
+                        faker.random().nextLong(),
+                        faker.random().nextLong(),
+                        faker.random().nextLong(),
+                        faker.random().nextLong(),
                     ),
-                    intArrayOf(
-                        faker.random().nextInt(),
-                        faker.random().nextInt(),
-                        faker.random().nextInt(),
-                        faker.random().nextInt(),
+                    longArrayOf(
+                        faker.random().nextLong(),
+                        faker.random().nextLong(),
+                        faker.random().nextLong(),
+                        faker.random().nextLong(),
                     )
                 )
             }

@@ -1,6 +1,6 @@
 package timefold.workshop.persistence.exposed
 
-import ai.timefold.solver.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore
+import ai.timefold.solver.core.api.score.HardMediumSoftScore
 import io.bluetape4k.exposed.r2dbc.tests.TestDB
 import io.bluetape4k.exposed.r2dbc.tests.withTables
 import io.bluetape4k.junit5.coroutines.runSuspendIO
@@ -32,9 +32,9 @@ class HardMediumSoftScoreTest: AbstractScoreExposedTest() {
 
             val name = faker.name().name()
             val hardMediumSoftScore = HardMediumSoftScore.of(
-                faker.random().nextInt(),
-                faker.random().nextInt(),
-                faker.random().nextInt()
+                faker.random().nextLong(),
+                faker.random().nextLong(),
+                faker.random().nextLong()
             )
 
             val id = T1.insertAndGetId {

@@ -5,7 +5,7 @@ bluetape4k-dependencies = "1.1.3"
 jetbrains-exposed = "1.2.0"
 
 # Timefold Solver (not in bluetape4k-dependencies BOM — explicit version required)
-timefold-solver = "1.32.0"
+timefold-solver = "2.1.0"
 
 # R2DBC drivers not managed by spring-boot-dependencies BOM
 r2dbc-mariadb = "1.3.0"
@@ -26,7 +26,7 @@ bluetape4k-junit5       = { module = "io.github.bluetape4k:bluetape4k-junit5" }
 bluetape4k-logging      = { module = "io.github.bluetape4k:bluetape4k-logging" }
 bluetape4k-spring-boot3-core = { module = "io.github.bluetape4k:bluetape4k-spring-boot-core" }
 bluetape4k-testcontainers    = { module = "io.github.bluetape4k:bluetape4k-testcontainers" }
-bluetape4k-timefold-solver-persistence-exposed = { module = "io.github.bluetape4k:bluetape4k-timefold-solver-persistence-exposed" }
+bluetape4k-timefold-solver-persistence-exposed = { module = "io.github.bluetape4k.exposed:bluetape4k-exposed-timefold-solver-persistence" }
 
 # ── bluetape4k-exposed extensions (version managed by bluetape4k-dependencies BOM) ──
 exposed-core       = { module = "io.github.bluetape4k.exposed:bluetape4k-exposed-core" }
@@ -46,9 +46,7 @@ jetbrains-exposed-r2dbc = { module = "org.jetbrains.exposed:exposed-r2dbc" }
 timefold-solver-bom                  = { module = "ai.timefold.solver:timefold-solver-bom",                  version.ref = "timefold-solver" }
 timefold-solver-core                 = { module = "ai.timefold.solver:timefold-solver-core" }
 timefold-solver-jackson              = { module = "ai.timefold.solver:timefold-solver-jackson" }
-timefold-solver-persistence-common   = { module = "ai.timefold.solver:timefold-solver-persistence-common" }
 timefold-solver-spring-boot-starter  = { module = "ai.timefold.solver:timefold-solver-spring-boot-starter" }
-timefold-solver-test                 = { module = "ai.timefold.solver:timefold-solver-test" }
 
 # ── JDBC Drivers (version managed by spring-boot-dependencies BOM) ──────────
 hikaricp          = { module = "com.zaxxer:HikariCP" }

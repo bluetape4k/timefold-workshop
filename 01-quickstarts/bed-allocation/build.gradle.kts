@@ -1,7 +1,6 @@
 plugins {
     kotlin("plugin.spring")
     id(Plugins.spring_boot)
-    id(Plugins.graalvm_native)
 }
 
 springBoot {
@@ -19,7 +18,6 @@ dependencies {
     implementation(libs.timefold.solver.core)
     implementation(libs.timefold.solver.jackson)
     implementation(libs.timefold.solver.spring.boot.starter)
-    testImplementation(libs.timefold.solver.test)
 
     // Bluetape4k
     implementation(libs.bluetape4k.jackson2)

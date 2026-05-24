@@ -1,6 +1,6 @@
 package timefold.workshop.persistence.exposed
 
-import ai.timefold.solver.core.api.score.buildin.bendablebigdecimal.BendableBigDecimalScore
+import ai.timefold.solver.core.api.score.BendableBigDecimalScore
 import io.bluetape4k.exposed.r2dbc.tests.TestDB
 import io.bluetape4k.exposed.r2dbc.tests.withTables
 import io.bluetape4k.junit5.coroutines.runSuspendIO

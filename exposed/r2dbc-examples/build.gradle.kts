@@ -1,7 +1,5 @@
 dependencies {
     implementation(libs.timefold.solver.core)
-    implementation(libs.timefold.solver.persistence.common)
-    testImplementation(libs.timefold.solver.test)
 
     // JetBrains Exposed core (version managed by jetbrains-exposed-bom)
     implementation(libs.jetbrains.exposed.r2dbc)

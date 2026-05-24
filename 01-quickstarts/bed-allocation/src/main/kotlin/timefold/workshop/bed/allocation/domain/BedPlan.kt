@@ -5,7 +5,7 @@ import ai.timefold.solver.core.api.domain.solution.PlanningScore
 import ai.timefold.solver.core.api.domain.solution.PlanningSolution
 import ai.timefold.solver.core.api.domain.solution.ProblemFactCollectionProperty
 import ai.timefold.solver.core.api.domain.valuerange.ValueRangeProvider
-import ai.timefold.solver.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore
+import ai.timefold.solver.core.api.score.HardMediumSoftScore
 import ai.timefold.solver.core.api.solver.SolverStatus
 import com.fasterxml.jackson.annotation.JsonIgnore
 import io.bluetape4k.support.hashOf
@@ -29,11 +29,11 @@ data class BedPlan(
     val beds: MutableList<Bed> by lazy { rooms.flatMap { it.beds }.toMutableList() }
 
     @PlanningScore
-    var score: HardMediumSoftScore = HardMediumSoftScore.ZERO
+    var score: HardMediumSoftScore? = null
 
     var solverStatus: SolverStatus = SolverStatus.NOT_SOLVING
 
-    constructor(score: HardMediumSoftScore, solverStatus: SolverStatus): this() {
+    constructor(score: HardMediumSoftScore?, solverStatus: SolverStatus): this() {
         this.score = score
         this.solverStatus = solverStatus
     }

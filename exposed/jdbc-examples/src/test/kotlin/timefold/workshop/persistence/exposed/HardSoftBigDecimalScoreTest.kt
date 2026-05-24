@@ -1,6 +1,6 @@
 package timefold.workshop.persistence.exposed
 
-import ai.timefold.solver.core.api.score.buildin.hardsoftbigdecimal.HardSoftBigDecimalScore
+import ai.timefold.solver.core.api.score.HardSoftBigDecimalScore
 import io.bluetape4k.exposed.dao.entityToStringBuilder
 import io.bluetape4k.exposed.dao.idEquals
 import io.bluetape4k.exposed.dao.idHashCode

@@ -1,6 +1,6 @@
 package timefold.workshop.bed.allocation.solver
 
-import ai.timefold.solver.test.api.score.stream.ConstraintVerifier
+import ai.timefold.solver.core.api.score.stream.test.ConstraintVerifier
 import io.bluetape4k.logging.coroutines.KLoggingChannel
 import io.bluetape4k.assertions.shouldNotBeNull
 import org.junit.jupiter.api.Test

@@ -1,11 +1,12 @@
 dependencies {
-    implementation(Libs.timefold_solver_bom)
+    implementation(libs.timefold.solver.core)
+    implementation(libs.timefold.solver.persistence.common)
+    testImplementation(libs.timefold.solver.test)
 
-    implementation(Libs.timefold_solver_core)
-    implementation(Libs.timefold_solver_persistence_common)
-    testImplementation(Libs.timefold_solver_test)
+    // JetBrains Exposed core (version managed by jetbrains-exposed-bom)
+    implementation(libs.jetbrains.exposed.r2dbc)
 
-    implementation(Libs.exposed_r2dbc)
+    // bluetape4k-exposed extensions (version managed by bluetape4k-dependencies BOM)
     implementation(libs.exposed.r2dbc)
     testImplementation(libs.exposed.r2dbc.tests)
 
@@ -16,20 +17,20 @@ dependencies {
     implementation(libs.bluetape4k.coroutines)
     testImplementation(libs.bluetape4k.junit5)
 
-    testImplementation(Libs.r2dbc_pool)
-    testImplementation(Libs.r2dbc_h2)
-    testImplementation(Libs.r2dbc_mariadb)
-    testImplementation(Libs.r2dbc_mysql)
-    testImplementation(Libs.r2dbc_postgresql)
+    testImplementation(libs.r2dbc.pool)
+    testImplementation(libs.r2dbc.h2)
+    testImplementation(libs.r2dbc.mariadb)
+    testImplementation(libs.r2dbc.mysql)
+    testImplementation(libs.r2dbc.postgresql)
 
     testImplementation(libs.bluetape4k.testcontainers)
-    testImplementation(Libs.testcontainers)
-    testImplementation(Libs.testcontainers_mariadb)
-    testImplementation(Libs.testcontainers_mysql)
-    testImplementation(Libs.testcontainers_postgresql)
+    testImplementation(libs.testcontainers.lib)
+    testImplementation(libs.testcontainers.mariadb)
+    testImplementation(libs.testcontainers.mysql)
+    testImplementation(libs.testcontainers.postgresql)
 
     // Testcontainers 용 DB 서버 실행 시 Driver를 필요로 합니다.
-    testRuntimeOnly(Libs.mariadb_java_client)
-    testRuntimeOnly(Libs.mysql_connector_j)
-    testRuntimeOnly(Libs.postgresql_driver)
+    testRuntimeOnly(libs.mariadb.java.client)
+    testRuntimeOnly(libs.mysql.connector.j)
+    testRuntimeOnly(libs.postgresql.driver)
 }

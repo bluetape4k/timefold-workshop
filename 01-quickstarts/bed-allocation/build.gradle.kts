@@ -16,10 +16,10 @@ configurations {
 dependencies {
     api(project(":bluetape4k-timefold"))
 
-    implementation(Libs.timefold_solver_core)
-    implementation(Libs.timefold_solver_jackson)
-    implementation(Libs.timefold_solver_spring_boot_starter)
-    testImplementation(Libs.timefold_solver_test)
+    implementation(libs.timefold.solver.core)
+    implementation(libs.timefold.solver.jackson)
+    implementation(libs.timefold.solver.spring.boot.starter)
+    testImplementation(libs.timefold.solver.test)
 
     // Bluetape4k
     implementation(libs.bluetape4k.jackson2)
@@ -32,21 +32,21 @@ dependencies {
 
     // Coroutines
     implementation(libs.bluetape4k.coroutines)
-    implementation(Libs.kotlinx_coroutines_reactor)
-    testImplementation(Libs.kotlinx_coroutines_test)
+    implementation(libs.kotlinx.coroutines.reactor)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     // Reactor
-    implementation(Libs.reactor_kotlin_extensions)
+    implementation(libs.reactor.kotlin.extensions)
 
     // Spring Boot
-    implementation(Libs.springBoot("autoconfigure"))
-    annotationProcessor(Libs.springBoot("autoconfigure-processor"))
-    annotationProcessor(Libs.springBoot("configuration-processor"))
-    runtimeOnly(Libs.springBoot("devtools"))
+    implementation(libs.spring.boot.autoconfigure)
+    annotationProcessor(libs.spring.boot.autoconfigure.processor)
+    annotationProcessor(libs.spring.boot.configuration.processor)
+    runtimeOnly(libs.spring.boot.devtools)
 
-    implementation(Libs.springBootStarter("aop"))
-    implementation(Libs.springBootStarter("webflux"))
-    testImplementation(Libs.springBootStarter("test")) {
+    implementation(libs.spring.boot.starter.aop)
+    implementation(libs.spring.boot.starter.webflux)
+    testImplementation(libs.spring.boot.starter.test) {
         exclude(group = "junit", module = "junit")
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
         exclude(module = "mockito-core")

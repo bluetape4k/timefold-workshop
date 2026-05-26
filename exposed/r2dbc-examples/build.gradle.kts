@@ -1,3 +1,7 @@
+plugins {
+    id("org.jetbrains.exposed.plugin")
+}
+
 dependencies {
     implementation(libs.timefold.solver.core)
 

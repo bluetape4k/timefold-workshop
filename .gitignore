@@ -64,3 +64,5 @@ atlassian-ide-plugin.xml
 .claude/
 .omc/
 .omx/
+
+.codegraph/

@@ -15,5 +15,7 @@ This repository contains runnable Timefold Solver workshop examples.
 
 ### Changed
 
+- Shared `bluetape4k-dependencies` catalog line aligned with the published
+  `1.2.0` BOM.
 - Root license changed to MIT.
 - Dependency governance, security baseline, and compatibility guard maintenance landed through PR #9 through PR #13.

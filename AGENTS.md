@@ -1,5 +1,10 @@
 # AGENTS.md - timefold-workshop
 
+This repository inherits the workspace guidance from `../AGENTS.md`.
+Read and follow the workspace root guide first. This file only adds
+repo-specific layout, commands, domain rules, and local exceptions.
+
+
 Timefold Solver workshop repository for constraint-solving examples, scheduling
 problems, and Kotlin/Spring Boot integrations.
 
@@ -28,8 +33,6 @@ Prefer module-scoped validation.
 | `00-shared/` | Shared test/support code |
 | `01-quickstarts/` | Timefold quickstart examples |
 | `exposed/` | Exposed-backed Timefold examples |
-
-Root README visual assets live under `docs/assets/`.
 
 ## Rules
 

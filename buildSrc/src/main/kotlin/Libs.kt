@@ -135,7 +135,6 @@ object Versions {
     const val hibernate_validator = "8.0.3.Final" // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
     const val querydsl = "5.1.0"                  // https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa
 
-    const val exposed = "1.3.0"       // https://mvnrepository.com/artifact/org.jetbrains.exposed/exposed-core
     const val r2dbc = "1.0.0.RELEASE"        // https://mvnrepository.com/artifact/io.r2dbc/r2dbc-spi
     const val agroal = "2.8"          // https://mvnrepository.com/artifact/io.agroal/agroal-api
 
@@ -1163,25 +1162,6 @@ object Libs {
     const val hibernate_validator = "org.hibernate.validator:hibernate-validator:${Versions.hibernate_validator}"
     const val hibernate_validator_annotation_processor =
         "org.hibernate:hibernate-validator-annotation-processor:${Versions.hibernate_validator}"
-
-    // Exposed
-    fun exposed(module: String) = "org.jetbrains.exposed:exposed-$module:${Versions.exposed}"
-
-    val exposed_bom = exposed("bom")
-    val exposed_core = exposed("core")
-    val exposed_crypt = exposed("crypt")
-    val exposed_dao = exposed("dao")
-    val exposed_java_time = exposed("java-time")
-    val exposed_jdbc = exposed("jdbc")
-    val exposed_json = exposed("json")
-    val exposed_kotlin_datetime = exposed("kotlin-datetime")
-    val exposed_migration_core = exposed("migration-core")
-    val exposed_migration_jdbc = exposed("migration-jdbc")
-    val exposed_migration_r2dbc = exposed("migration-r2dbc")
-    val exposed_money = exposed("money")
-    val exposed_r2dbc = exposed("r2dbc")
-    val exposed_spring_boot_starter = exposed("spring-boot-starter")
-    const val exposed_spring_transaction = "org.jetbrains.exposed:spring-transaction:${Versions.exposed}"
 
     // R2DBC (버전은 spring-data 버전을 사용한다)
     fun r2dbc(module: String, version: String = Versions.r2dbc): String = "io.r2dbc:r2dbc-$module:$version"

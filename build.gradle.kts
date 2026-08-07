@@ -17,7 +17,7 @@ plugins {
 
     id(Plugins.testLogger) version Plugins.Versions.testLogger
     id(Plugins.graalvm_native) version Plugins.Versions.graalvm_native apply false
-    id("org.jetbrains.exposed.plugin") version Versions.exposed apply false
+    alias(libs.plugins.exposed) apply false
 }
 
 val rootLibs = libs

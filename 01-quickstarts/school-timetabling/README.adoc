@@ -1,17 +1,18 @@
-= School Timetabling (Kotlin, Quarkus, Maven)
+= 학교 시간표 작성 (Kotlin, Quarkus, Maven)
 
-Assign lessons to timeslots and rooms to produce a better schedule for teachers and students.
+수업을 시간대와 강의실에 배정하여 교사와 학생을 위한 더 나은 시간표를
+생성합니다.
 
 image::./school-timetabling-screenshot.png[]
 
-* <<run,Run the application>>
-* <<package,Run the packaged application>>
-* <<container,Run the application in a container>>
-* <<native,Run it native>>
+* <<run,애플리케이션 실행>>
+* <<package,패키징한 애플리케이션 실행>>
+* <<container,컨테이너에서 애플리케이션 실행>>
+* <<native,네이티브 실행>>
 
-== Prerequisites
+== 사전 요구 사항
 
-. Install JDK, Maven and Kotlin, for example with https://sdkman.io[Sdkman]:
+. https://sdkman.io[Sdkman]을 사용하여 JDK, Maven, Kotlin을 설치합니다.
 +
 ----
 $ sdk install java
@@ -20,9 +21,9 @@ $ sdk install kotlin
 ----
 
 [[run]]
-== Run the application
+== 애플리케이션 실행
 
-. Git clone the timefold-quickstarts repo and navigate to this directory:
+. `timefold-quickstarts` 저장소를 clone하고 이 디렉터리로 이동합니다.
 +
 [source,shell]
 ----
@@ -31,31 +32,33 @@ $ git clone https://github.com/TimefoldAI/timefold-quickstarts.git
 $ cd timefold-quickstarts/kotlin/school-timetabling
 ----
 
-. Start the application with Maven:
+. Maven으로 애플리케이션을 시작합니다.
 +
 [source,shell]
 ----
 $ mvn quarkus:dev
 ----
 
-. Visit http://localhost:8080 in your browser.
+. 브라우저에서 http://localhost:8080 을 엽니다.
 
-. Click on the *Solve* button.
+. *Solve* 버튼을 클릭합니다.
 
-Then try _live coding_:
+그다음 _live coding_을 시도해 보세요.
 
-. Make some changes in the source code.
-. Refresh your browser (F5).
+. 소스 코드 일부를 변경합니다.
+. 브라우저를 새로 고칩니다(F5).
 
-Notice that those changes are immediately in effect.
+변경 사항이 즉시 적용되는 것을 확인할 수 있습니다.
 
 [[enterprise]]
-== Run the application with Timefold Solver Enterprise Edition
+== Timefold Solver Enterprise Edition으로 애플리케이션 실행
 
-For high-scalability use cases, switch to https://docs.timefold.ai/timefold-solver/latest/enterprise-edition/enterprise-edition[Timefold Solver Enterprise Edition], our commercial offering.
-https://timefold.ai/contact[Contact Timefold] to obtain the credentials required to access our private Enterprise Maven repository.
+대규모 확장이 필요한 경우 상용 제품인
+https://docs.timefold.ai/timefold-solver/latest/enterprise-edition/enterprise-edition[Timefold Solver Enterprise Edition]으로 전환합니다.
+비공개 Enterprise Maven 저장소에 접근하는 데 필요한 자격 증명은
+https://timefold.ai/contact[Timefold에 문의]하여 발급받습니다.
 
-. Create `.m2/settings.xml` in your home directory with the following content:
+. 홈 디렉터리에 `.m2/settings.xml`을 만들고 다음 내용을 작성합니다.
 +
 --
 [source,xml,options="nowrap"]
@@ -64,7 +67,7 @@ https://timefold.ai/contact[Contact Timefold] to obtain the credentials required
   ...
   <servers>
     <server>
-      <!-- Replace "my_username" and "my_password" with credentials obtained from a Timefold representative. -->
+      <!-- "my_username"과 "my_password"를 Timefold 담당자로부터 받은 자격 증명으로 바꿉니다. -->
       <id>timefold-solver-enterprise</id>
       <username>my_username</username>
       <password>my_password</password>
@@ -74,40 +77,42 @@ https://timefold.ai/contact[Contact Timefold] to obtain the credentials required
 </settings>
 ----
 
-See https://maven.apache.org/settings.html[Settings Reference] for more information on Maven settings.
+자세한 내용은 https://maven.apache.org/settings.html[Maven 설정 참고 문서]를
+확인합니다.
 --
 
-. Start the application with Maven:
+. Maven으로 애플리케이션을 시작합니다.
 +
 [source,shell]
 ----
 $ mvn clean quarkus:dev -Denterprise
 ----
 
-. Visit http://localhost:8080 in your browser.
+. 브라우저에서 http://localhost:8080 을 엽니다.
 
-. Click on the *Solve* button.
+. *Solve* 버튼을 클릭합니다.
 
-Then try _live coding_:
+그다음 _live coding_을 시도해 보세요.
 
-. Make some changes in the source code.
-. Refresh your browser (F5).
+. 소스 코드 일부를 변경합니다.
+. 브라우저를 새로 고칩니다(F5).
 
-Notice that those changes are immediately in effect.
+변경 사항이 즉시 적용되는 것을 확인할 수 있습니다.
 
 [[package]]
-== Run the packaged application
+== 패키징한 애플리케이션 실행
 
-When you're done iterating in `quarkus:dev` mode, package the application to run as a conventional jar file.
+`quarkus:dev` 모드에서 반복 작업을 마쳤다면 일반 JAR 파일로 실행할 수 있도록
+애플리케이션을 패키징합니다.
 
-. Compile it with Maven:
+. Maven으로 컴파일합니다.
 +
 [source,shell]
 ----
 $ mvn package
 ----
 
-. Run it:
+. 애플리케이션을 실행합니다.
 +
 [source,shell]
 ----
@@ -116,30 +121,31 @@ $ java -jar ./target/quarkus-app/quarkus-run.jar
 +
 [NOTE]
 ====
-Even though it's written in Kotlin, it can run with the `java` command.
+Kotlin으로 작성했지만 `java` 명령으로 실행할 수 있습니다.
 ====
 +
 [NOTE]
 ====
-To run it on port 8081 instead, add `-Dquarkus.http.port=8081`.
+8081 포트로 실행하려면 `-Dquarkus.http.port=8081`을 추가합니다.
 ====
 
-. Visit http://localhost:8080 in your browser.
+. 브라우저에서 http://localhost:8080 을 엽니다.
 
-. Click on the *Solve* button.
+. *Solve* 버튼을 클릭합니다.
 
 [[container]]
-== Run the application in a container
+== 컨테이너에서 애플리케이션 실행
 
-. Build a container image:
+. 컨테이너 이미지를 빌드합니다.
 +
 [source,shell]
 ----
 $ mvn package -Dcontainer
 ----
 
-The container image name
-. Run a container:
+컨테이너 이미지 이름은 다음과 같습니다.
+
+. 컨테이너를 실행합니다.
 +
 [source,shell]
 ----
@@ -147,31 +153,31 @@ $ docker run -p 8080:8080 --rm $USER/kotlin-school-timetabling:1.0-SNAPSHOT
 ----
 
 [[native]]
-== Run it native
+== 네이티브로 실행
 
-To increase startup performance for serverless deployments, build the application as a native executable:
+서버리스 배포의 시작 성능을 높이려면 애플리케이션을 네이티브 실행 파일로
+빌드합니다.
 
-. https://quarkus.io/guides/building-native-image#configuring-graalvm[Install GraalVM and gu install the native-image tool]
+. https://quarkus.io/guides/building-native-image#configuring-graalvm[GraalVM을 설치하고 `gu install`로 native-image 도구를 설치]합니다.
 
-. Compile it natively.
-This takes a few minutes:
+. 네이티브로 컴파일합니다. 몇 분 정도 걸릴 수 있습니다.
 +
 [source,shell]
 ----
 $ mvn package -Dnative -DskipTests
 ----
 
-. Run the native executable:
+. 네이티브 실행 파일을 실행합니다.
 +
 [source,shell]
 ----
 $ ./target/*-runner
 ----
 
-. Visit http://localhost:8080 in your browser.
+. 브라우저에서 http://localhost:8080 을 엽니다.
 
-. Click on the *Solve* button.
+. *Solve* 버튼을 클릭합니다.
 
-== More information
+== 추가 정보
 
-Visit https://timefold.ai[timefold.ai].
+https://timefold.ai[timefold.ai]를 확인합니다.

@@ -3,11 +3,11 @@ package io.bluetape4k.timefold.dsl
 import kotlin.reflect.KClass
 
 /**
- * DSL for defining a solver factory.
+ * 솔버 팩토리를 정의하기 위한 DSL입니다.
  *
- * @param T the type of the planning solution
- * @property planningSolutionClazz the class of the planning solution
- * @property constraints the list of constraint definitions
+ * @param T 플래닝 솔루션의 타입입니다.
+ * @property planningSolutionClazz 플래닝 솔루션의 클래스입니다.
+ * @property constraints 제약 조건 정의 목록입니다.
  */
 class SolverFactoryDsl<T: Any>(
     val planningSolutionClazz: KClass<T>,
@@ -23,11 +23,11 @@ class SolverFactoryDsl<T: Any>(
 }
 
 /**
- * DSL function to create a [SolverFactoryDsl] for a given class.
+ * 주어진 클래스에 대한 [SolverFactoryDsl]을 생성하는 DSL 함수입니다.
  *
- * @param T the type of the planning solution
- * @param constraints the list of constraint definitions
- * @return a [SolverFactoryDsl] for the specified class
+ * @param T 플래닝 솔루션의 타입입니다.
+ * @param constraints 제약 조건 정의 목록입니다.
+ * @return 지정한 클래스에 대한 [SolverFactoryDsl] 인스턴스입니다.
  */
 inline fun <reified T: Any> solverFactory(
     constraints: List<ConstraintDefinition>,

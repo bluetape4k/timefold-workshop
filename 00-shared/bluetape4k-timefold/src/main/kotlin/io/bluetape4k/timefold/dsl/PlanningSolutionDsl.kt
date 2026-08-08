@@ -17,10 +17,10 @@ class PlanningSolutionBuilder {
 }
 
 /**
- * DSL function to create a [PlanningSolutionBuilder].
+ * [PlanningSolutionBuilder]를 생성하기 위한 DSL 함수입니다.
  *
- * @param block the DSL block to configure the planning solution
- * @return a [PlanningSolutionBuilder] for the specified class
+ * @param block 플래닝 솔루션을 구성하는 DSL 블록입니다.
+ * @return 지정한 설정을 적용한 [PlanningSolutionBuilder] 인스턴스입니다.
  */
 inline fun planningSolution(block: PlanningSolutionBuilder.() -> Unit): PlanningSolutionBuilder {
     return PlanningSolutionBuilder().apply(block)

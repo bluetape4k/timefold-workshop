@@ -36,12 +36,11 @@ class PlanningEntityBuilder<T: Any>(val kclazz: KClass<T>) {
 }
 
 /**
- * DSL function to create a [PlanningEntityDefinition] for a given class.
- * 주어진 클래스에 대해 [PlanningEntityDefinition]을 생성하기 위한 DSL 함수입니다.
+ * 주어진 클래스에 대한 [PlanningEntityDefinition]을 생성하기 위한 DSL 함수입니다.
  *
- * @param T 플래닝 엔티티의 타입
+ * @param T 플래닝 엔티티의 타입입니다.
  * @param block 플래닝 엔티티를 정의하는 블록입니다.
- * @return a 지정한 클래스를 위한 [PlanningEntityDefinition] 인스턴스입니다.
+ * @return 지정한 클래스를 위한 [PlanningEntityDefinition] 인스턴스입니다.
  */
 inline fun <reified T: Any> planningEntity(
     block: PlanningEntityBuilder<T>.() -> Unit,

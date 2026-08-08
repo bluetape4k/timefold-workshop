@@ -1,28 +1,26 @@
-# README Diagram Quality
+# README 다이어그램 품질
 
-## Context
+## 배경
 
-The workspace-wide README diagram pass regenerated Timefold workshop diagrams
-with the current infographic style and the latest overlap and arrow-spacing
-rules.
+워크스페이스 전체 README 다이어그램 작업에서 최신 인포그래픽 스타일과 겹침 및
+화살표 간격 규칙을 적용해 Timefold workshop 다이어그램을 다시 생성했다.
 
-## Decision
+## 결정
 
-Keep the generated SVG sources in the repository and render matching PNG files
-for README consumption.
+생성한 SVG 원본은 저장소에 보관하고 README에서 사용할 대응 PNG 파일을 렌더링한다.
 
-## Outcome
+## 결과
 
-The README image asset pair now follows the shared pastel infographic style and
-remains reusable for future diagram updates.
+README 이미지 asset 쌍이 공유 파스텔 인포그래픽 스타일을 따르며, 이후 다이어그램
+갱신에도 재사용할 수 있다.
 
-## Verification
+## 검증
 
-- Ran the workspace README diagram quality audit and confirmed zero critical
-  findings for text overlap, canvas clipping, sequence label clipping, missing
-  README coverage, and zero-length arrows.
+- 워크스페이스 README 다이어그램 품질 감사를 실행했다. 텍스트 겹침, 캔버스 잘림,
+  시퀀스 라벨 잘림, README 누락, 길이 0인 화살표에 대한 치명적 문제가 0건임을
+  확인했다.
 
-## Future Guidance
+## 후속 지침
 
-Preserve both SVG and PNG assets. Use the SVG as the editable source and update
-the PNG whenever the source changes.
+SVG와 PNG asset을 모두 보존한다. SVG를 편집 원본으로 사용하고 원본이 바뀔 때마다
+PNG도 갱신한다.

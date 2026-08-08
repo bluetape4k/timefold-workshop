@@ -1,19 +1,23 @@
-## Context
+## 배경
 
-Adopted the JetBrains Exposed Gradle plugin for Timefold Exposed example modules.
+Timefold Exposed 예제 모듈에 JetBrains Exposed Gradle plugin을 도입했다.
 
-## Decision
+## 결정
 
-The workshop stays independent from the managed `bt4k` catalog. Its local JetBrains Exposed BOM line was moved to 1.3.0 because the official Exposed plugin is available for that line.
+workshop은 관리되는 `bt4k` catalog과 독립적으로 유지한다. 공식 Exposed plugin이
+해당 라인에서 제공되므로 로컬 JetBrains Exposed BOM 라인을 1.3.0으로 옮겼다.
 
-## Outcome
+## 결과
 
-JDBC and R2DBC Exposed example modules now apply the plugin and expose `generateMigrations`.
+JDBC 및 R2DBC Exposed 예제 모듈이 이제 plugin을 적용하고
+`generateMigrations`를 노출한다.
 
-## Verification
+## 검증
 
-Ran `git diff --check`, `./gradlew -q help`, and `:exposed-jdbc-examples:tasks --all`.
+`git diff --check`, `./gradlew -q help`,
+`:exposed-jdbc-examples:tasks --all`을 실행했다.
 
-## Future Guard
+## 후속 보호 규칙
 
-Do not tie workshop plugin versions to `bluetape4k-dependencies` catalog refs; keep local aliases explicit unless the repo becomes a managed library repo.
+workshop plugin 버전을 `bluetape4k-dependencies` catalog 참조에 묶지 않는다.
+저장소가 관리되는 library repo가 되기 전까지 로컬 alias를 명시적으로 유지한다.

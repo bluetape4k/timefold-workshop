@@ -152,7 +152,6 @@ subprojects {
         imports {
             mavenBom(rootLibs.bluetape4k.dependencies.get().toString())
             mavenBom(rootLibs.jetbrains.exposed.bom.get().toString())
-            mavenBom(rootLibs.timefold.solver.bom.get().toString())
             mavenBom(Libs.spring_integration_bom)
             mavenBom(Libs.spring_cloud_dependencies)
             mavenBom(Libs.spring_boot_dependencies)

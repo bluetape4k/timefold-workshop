@@ -4,9 +4,6 @@ bluetape4k-dependencies = "2.1.0-SNAPSHOT"
 # JetBrains Exposed (managed by the central dependencies BOM)
 jetbrains-exposed = "1.4.0"
 
-# Timefold Solver (not in bluetape4k-dependencies BOM — explicit version required)
-timefold-solver = "2.2.0"
-
 # R2DBC drivers not managed by spring-boot-dependencies BOM
 r2dbc-mariadb = "1.3.0"
 r2dbc-mysql    = "1.4.1"
@@ -45,8 +42,7 @@ jetbrains-exposed-dao  = { module = "org.jetbrains.exposed:exposed-dao" }
 jetbrains-exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc" }
 jetbrains-exposed-r2dbc = { module = "org.jetbrains.exposed:exposed-r2dbc" }
 
-# ── Timefold Solver (version managed by timefold-solver-bom) ────────────────
-timefold-solver-bom                  = { module = "ai.timefold.solver:timefold-solver-bom",                  version.ref = "timefold-solver" }
+# ── Timefold Solver (version managed by bluetape4k-dependencies BOM) ───────
 timefold-solver-core                 = { module = "ai.timefold.solver:timefold-solver-core" }
 timefold-solver-jackson              = { module = "ai.timefold.solver:timefold-solver-jackson" }
 timefold-solver-spring-boot-starter  = { module = "ai.timefold.solver:timefold-solver-spring-boot-starter" }

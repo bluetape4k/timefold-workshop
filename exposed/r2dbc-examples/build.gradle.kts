@@ -21,6 +21,9 @@ dependencies {
 
     testImplementation(libs.r2dbc.pool)
     testImplementation(libs.r2dbc.h2)
+    // r2dbc-h2 1.1.0.RELEASE invokes the H2 2.4.240 Session ABI; Spring Boot's
+    // managed H2 2.3.x line is not binary-compatible with that driver.
+    testRuntimeOnly(Libs.h2_v2)
     testImplementation(libs.r2dbc.mariadb)
     testImplementation(libs.r2dbc.mysql)
     testImplementation(libs.r2dbc.postgresql)

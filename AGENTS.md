@@ -18,7 +18,7 @@ repo-specific layout, commands, domain rules, and local exceptions.
 Timefold Solver workshop repository for constraint-solving examples, scheduling
 problems, and Kotlin/Spring Boot integrations.
 
-- Java 21
+- Java 25
 - Kotlin 2.3
 - Spring Boot 3.x/3.4+
 - Exposed for persistence examples
@@ -50,4 +50,4 @@ Prefer module-scoped validation.
 - Keep solver examples focused on constraint modeling clarity.
 - When changing scheduling/domain models, add or update tests that prove the
   constraint behavior rather than only checking object construction.
-- Kotlin uses Java 21 toolchain and Kotlin 2.3 language/api settings.
+- Kotlin uses Java 25 toolchain and Kotlin 2.3 language/api settings.

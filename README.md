@@ -49,7 +49,7 @@ conflicts, respecting resource constraints, and balancing soft preferences.
 
 ## Requirements
 
-- Java 21+
+- Java 25+
 - Kotlin 2.3+
 - Spring Boot 3.4+
 - Timefold Solver

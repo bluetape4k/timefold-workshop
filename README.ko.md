@@ -47,7 +47,7 @@
 
 ## 환경
 
-- Java 21+
+- Java 25+
 - Kotlin 2.3+
 - Spring Boot 3.4+
 - Timefold Solver

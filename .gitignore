@@ -66,4 +66,7 @@ atlassian-ide-plugin.xml
 .omx/
 .bluetape/
 
+# Linked worktrees
+.worktrees/
+
 .codegraph/

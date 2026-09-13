@@ -1,5 +1,15 @@
 # AGENTS.md - timefold-workshop
 
+## Guidance hierarchy
+
+Before applying this repository overlay, read and follow the guidance in this
+order:
+
+1. User scope: `${CODEX_HOME:-$HOME/.codex}/AGENTS.md`.
+2. Workspace scope: `/Users/debop/work/bluetape4k/.github/docs/workspace/AGENTS.md`.
+
+Apply both broader scopes before repository-specific rules.
+
 This repository inherits the workspace guidance from `../AGENTS.md`.
 Read and follow the workspace root guide first. This file only adds
 repo-specific layout, commands, domain rules, and local exceptions.
@@ -8,7 +18,7 @@ repo-specific layout, commands, domain rules, and local exceptions.
 Timefold Solver workshop repository for constraint-solving examples, scheduling
 problems, and Kotlin/Spring Boot integrations.
 
-- Java 21
+- Java 25
 - Kotlin 2.3
 - Spring Boot 3.x/3.4+
 - Exposed for persistence examples
@@ -40,4 +50,4 @@ Prefer module-scoped validation.
 - Keep solver examples focused on constraint modeling clarity.
 - When changing scheduling/domain models, add or update tests that prove the
   constraint behavior rather than only checking object construction.
-- Kotlin uses Java 21 toolchain and Kotlin 2.3 language/api settings.
+- Kotlin uses Java 25 toolchain and Kotlin 2.3 language/api settings.

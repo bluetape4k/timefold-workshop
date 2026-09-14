@@ -1,1 +1,37 @@
-# Module bed-allocation
+# bed-allocation
+
+Kotlin/Spring WebFlux에서 병원 환자의 입원 기간과 병상 제약을 모델링하는
+Timefold Solver quickstart입니다. Timefold Solver `2.6.0`은 중앙
+`bluetape4k-dependencies` BOM에서 관리합니다.
+
+## 사전 요구 사항
+
+- Java 25+
+- Docker와 Testcontainers를 실행할 수 있는 환경(테스트 시)
+
+## 애플리케이션 실행
+
+저장소 루트에서 Spring Boot 애플리케이션을 시작할 수 있습니다.
+
+```bash
+./gradlew :bed-allocation:bootRun
+```
+
+현재 모듈은 REST controller를 제공하지 않으므로 실행 결과를 HTTP API로
+조회하지 않습니다. `BedPlan`, `Stay`, `BedAllocationConstraintProvider`의
+도메인·제약 동작은 테스트가 재현합니다.
+
+## 회귀 검증
+
+same-bed join, 미할당 filter, gender/department filter의 증분 전이는 다음
+명령으로 확인합니다.
+
+```bash
+./gradlew :bed-allocation:test --tests '*BedAllocationIncrementalScoreTest'
+./gradlew :bed-allocation:test
+```
+
+## 참고 자료
+
+- [Timefold Solver 2.6.0 release](https://github.com/TimefoldAI/timefold-solver/releases/tag/v2.6.0)
+- [Planning a problem](https://docs.timefold.ai/timefold-solver/latest/domain-modeling/modeling-planning-problems)

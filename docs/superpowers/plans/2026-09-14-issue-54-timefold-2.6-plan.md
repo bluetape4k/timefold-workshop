@@ -411,15 +411,15 @@ mutable list를 소유하며 fixture factory는 fresh object를 반환한다.
 - Modify: 01-quickstarts/school-timetabling/README.md, README.adoc
 - Modify: 01-quickstarts/bed-allocation/README.md, README.adoc
 
-- [ ] **Step 1: persistence tests를 순차 실행한다.**
+- [x] **Step 1: persistence tests를 순차 실행한다.**
 
-    ./gradlew :exposed:jdbc-examples:test
-    ./gradlew :exposed:r2dbc-examples:test
+    ./gradlew :exposed-jdbc-examples:test
+    ./gradlew :exposed-r2dbc-examples:test
 
 R2DBC H2 1.1.0.RELEASE와 H2 2.4.240 ABI pin은 변경하지 않는다. 필요한
 Testcontainers는 Colima 상태를 확인한 뒤 backend 하나씩 실행한다.
 
-- [ ] **Step 2: root README 양쪽에 동일 실행 경로를 추가한다.**
+- [x] **Step 2: root README 양쪽에 동일 실행 경로를 추가한다.**
 
     ./gradlew :bluetape4k-timefold:test --tests '*ListShadowDomainTest'
     ./gradlew :school-timetabling:test --tests '*TimetableIncrementalScoreTest'
@@ -429,13 +429,13 @@ Testcontainers는 Colima 상태를 확인한 뒤 backend 하나씩 실행한다.
 Timefold 2.6 중앙 해결, community의 Enterprise ScoreAnalysis disabled/N/A,
 Neighborhoods preview/custom move 미사용을 양쪽 문서에 설명한다.
 
-- [ ] **Step 3: existing module README를 code와 맞춘다.**
+- [x] **Step 3: existing module README를 code와 맞춘다.**
 
 shared README에는 list-shadow annotation을, school/bed README pair에는
 join/filter/lifecycle 명령을 적는다. locale 파일이 없으면 새 파일을 만들지
 않고 root 한영 문서를 source of truth로 삼는다.
 
-- [ ] **Step 4: docs validation을 실행한다.**
+- [x] **Step 4: docs validation을 실행한다.**
 
     git diff --check
     rg -n "2\.6\.0|PlanningListVariable|ShadowVariable|SolverManager|Enterprise|Neighborhoods" README.md README.ko.md 00-shared/bluetape4k-timefold/README.md 01-quickstarts/school-timetabling/README.md 01-quickstarts/school-timetabling/README.adoc 01-quickstarts/bed-allocation/README.md 01-quickstarts/bed-allocation/README.adoc
@@ -451,7 +451,7 @@ join/filter/lifecycle 명령을 적는다. locale 파일이 없으면 새 파일
 
     ./gradlew :bluetape4k-timefold:test
     ./gradlew :school-timetabling:test :bed-allocation:test
-    ./gradlew :exposed:jdbc-examples:test :exposed:r2dbc-examples:test
+    ./gradlew :exposed-jdbc-examples:test :exposed-r2dbc-examples:test
     ./gradlew test
     ./gradlew build
     scripts/verify-publication-poms.py --workspace .. --summary

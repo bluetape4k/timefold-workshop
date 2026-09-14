@@ -62,8 +62,6 @@ object Plugins {
 
 object Versions {
 
-    const val timefold_solver = "1.32.0" // https://mvnrepository.com/artifact/ai.timefold.solver/timefold-solver-core
-
     const val kotlin = "2.3.20"                 // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib
     const val kotlinx_coroutines = "1.11.0"      // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
     const val kotlinx_serialization = "1.11.0"   // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm
@@ -297,22 +295,6 @@ object Libs {
 
     val kotlinx_benchmark_runtime = kotlinxBenchmark("runtime")
     val kotlinx_benchmark_runtime_jvm = kotlinxBenchmark("runtime-jvm")
-
-    // Timefold Solver
-    fun timefoldSolver(module: String, version: String = Versions.timefold_solver) = "ai.timefold.solver:timefold-solver-$module:$version"
-
-    val timefold_solver_bom = timefoldSolver("bom")
-    val timefold_solver_benchmark = timefoldSolver("benchmark")
-    val timefold_solver_core = timefoldSolver("core")
-    val timefold_solver_jackson = timefoldSolver("jackson")
-    val timefold_solver_jaxb = timefoldSolver("jaxb")
-    val timefold_solver_jsonb = timefoldSolver("jsonb")
-    val timefold_solver_migration = timefoldSolver("migration")
-    val timefold_solver_persistence_common = timefoldSolver("persistence-common")
-    val timefold_solver_persistence_jpa = timefoldSolver("persistence-jpa")
-    val timefold_solver_spring_boot_starter = timefoldSolver("spring-boot-starter")
-    val timefold_solver_test = timefoldSolver("test")
-    val timefold_solver_webui = timefoldSolver("webui")
 
     // javax api
     const val javax_activation_api = "javax.activation:javax.activation-api:1.2.0"

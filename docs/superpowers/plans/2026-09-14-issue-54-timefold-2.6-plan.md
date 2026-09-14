@@ -335,7 +335,7 @@ poll → final score read를 검증하고, 두 번째 job에는 DELETE terminate
 - Create: 00-shared/bluetape4k-timefold/src/main/kotlin/io/bluetape4k/timefold/listshadow/ListShadowDomain.kt
 - Create: 00-shared/bluetape4k-timefold/src/test/kotlin/io/bluetape4k/timefold/listshadow/ListShadowDomainTest.kt
 
-- [ ] **Step 1: domain model을 추가한다.**
+- [x] **Step 1: domain model을 추가한다.**
 
     @PlanningEntity
     class ListShadowRoute(
@@ -373,7 +373,7 @@ poll → final score read를 검증하고, 두 번째 job에는 DELETE terminate
 두 entity class를 solver config에 명시적으로 등록한다. route가 solver-owned
 mutable list를 소유하며 fixture factory는 fresh object를 반환한다.
 
-- [ ] **Step 2: reorder/move RED tests를 작성한다.**
+- [x] **Step 2: reorder/move RED tests를 작성한다.**
 
     @Test
     fun indexAndDeclarativePositionRefreshAfterReorder() {

@@ -447,7 +447,7 @@ join/filter/lifecycle 명령을 적는다. locale 파일이 없으면 새 파일
 - Create: docs/review/2026-09-14-issue-54-implementation-review.md
 - Create: docs/lessons/2026-09-14-issue-54-timefold-2.6.md
 
-- [ ] **Step 1: targeted-to-full verification을 dependency order로 실행한다.**
+- [x] **Step 1: targeted-to-full verification을 dependency order로 실행한다.**
 
     ./gradlew :bluetape4k-timefold:test
     ./gradlew :school-timetabling:test :bed-allocation:test
@@ -460,20 +460,20 @@ join/filter/lifecycle 명령을 적는다. locale 파일이 없으면 새 파일
 각 command의 exit code, exact HEAD, PASS/N/A/blocked를 기록한다. SKIPPED,
 NO-SOURCE, disabled Enterprise, absent benchmark는 PASS가 아니다.
 
-- [ ] **Step 2: final 7-Tier review artifact를 작성한다.**
+- [x] **Step 2: final 7-Tier review artifact를 작성한다.**
 
 정확한 branch diff를 performance, stability, security, operator/ops,
 developer/API, user/caller와 main integration 관점으로 검토한다. file:line,
 P0-P3, disposition, SPW-01..05를 기록하고 P0=0, P1=0을 요구한다.
 
-- [ ] **Step 3: durable lesson을 작성한다.**
+- [x] **Step 3: durable lesson을 작성한다.**
 
 lesson에는 context, decision, migration surprise/failure(이번 receipt/liveness
 이슈 포함), outcome, exact verification, review misses, future guard를
 기록한다. central BOM/versionless alias 보존과 Neighborhoods/benchmark N/A
 결정을 명시한다.
 
-- [ ] **Step 4: Lore trailer를 포함해 commit한다.**
+- [x] **Step 4: Lore trailer를 포함해 commit한다.**
 
 artifact commit이 implementation commit보다 앞서도록 하고 모든 commit은
 feature branch에 둔다.

@@ -1,7 +1,9 @@
 package timefold.workshop.school.timetabling.controller
 
 import ai.timefold.solver.core.api.solver.SolverStatus
+import io.bluetape4k.assertions.shouldBeEqualTo
 import io.bluetape4k.logging.debug
+import io.bluetape4k.spring.tests.httpDelete
 import io.bluetape4k.spring.tests.httpGet
 import io.bluetape4k.spring.tests.httpPost
 import io.bluetape4k.spring.tests.httpPut
@@ -16,6 +18,7 @@ import org.awaitility.kotlin.atMost
 import org.awaitility.kotlin.await
 import org.awaitility.kotlin.withPollInterval
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
 import org.springframework.beans.factory.annotation.Autowired
@@ -87,6 +90,34 @@ class TimetableControllerTest(
 
         log.debug { "Result timetable score: ${resultTimetable.score}, solverStatus: ${resultTimetable.solverStatus}" }
         resultTimetable.score.shouldNotBeNull()
+
+        val repeatedResult = client.httpGet("/timetables/$jobId")
+            .returnResult<Timetable>().responseBody
+            .awaitSingle()
+        repeatedResult.score shouldBeEqualTo resultTimetable.score
+    }
+
+    @Test
+    fun `terminate solving converges to a terminal result`() = runTest(timeout = 2.minutes) {
+        val testTimetable = retrieveTimetable(TimetableProvider.DataSizeType.SMALL)
+
+        val jobId = client.httpPost("/timetables", value = testTimetable)
+            .returnResult<String>().responseBody
+            .awaitSingle()
+
+        val terminatedTimetable = client.httpDelete("/timetables/$jobId")
+            .expectStatus().is2xxSuccessful
+            .returnResult<Timetable>().responseBody
+            .awaitSingle()
+
+        terminatedTimetable.score.shouldNotBeNull()
+        terminatedTimetable.solverStatus shouldBeEqualTo SolverStatus.NOT_SOLVING
+
+        val status = client.httpGet("/timetables/$jobId/status")
+            .returnResult<Timetable>().responseBody
+            .awaitSingle()
+        status.solverStatus shouldBeEqualTo SolverStatus.NOT_SOLVING
+        status.score shouldBeEqualTo terminatedTimetable.score
     }
 
     @Disabled("SolutionManager.analyze() is a Timefold Enterprise feature in 2.x, not available in community edition")

@@ -31,51 +31,55 @@ import timefold.workshop.school.timetabling.solver.justifications.StudentGroupSu
 import timefold.workshop.school.timetabling.solver.justifications.TeacherConflictJustification
 import timefold.workshop.school.timetabling.solver.justifications.TeacherRoomStabilityJustification
 import timefold.workshop.school.timetabling.solver.justifications.TeacherTimeEfficiencyJustification
-import java.util.*
-import java.util.concurrent.ConcurrentHashMap
+import java.util.UUID
 
 @RestController
 @RequestMapping("/timetables")
 class TimetableController(
     private val solverManager: SolverManager<Timetable>,
     private val solutionManager: SolutionManager<Timetable, HardSoftScore>,
+    private val jobRegistry: TimetableJobRegistry,
 ): CoroutineScope by CoroutineScope(Dispatchers.IO + CoroutineName("timetable")) {
 
     companion object: KLoggingChannel()
 
-    // TODO: Without any "time to live", the map may eventually grow out of memory.
-    private val jobIdToJob = ConcurrentHashMap<String, Job>()
-
-    private data class Job(val timetable: Timetable?, val exception: Throwable? = null) {
-        companion object {
-            fun ofTimetable(timetable: Timetable): Job = Job(timetable)
-            fun ofException(error: Throwable): Job = Job(null, error)
-        }
-    }
-
     @GetMapping
-    suspend fun getJobIds(): Collection<String> = jobIdToJob.keys
+    suspend fun getJobIds(): Collection<String> = jobRegistry.jobIds()
 
     @PostMapping(produces = [MediaType.TEXT_PLAIN_VALUE])
     suspend fun solve(@RequestBody problem: Timetable): String {
-        log.debug { "Received problem: $problem" }
+        log.debug { "Received timetable solve request" }
 
         val jobId = UUID.randomUUID().toString()
-        jobIdToJob[jobId] = Job.ofTimetable(problem)
+        jobRegistry.start(jobId, problem)
 
         log.debug { "Starting solver for jobId: $jobId" }
-        solverManager
-            .solveBuilder()
-            .withProblemId(jobId)
-            .withProblemFinder { jobIdToJob[it.toString()]!!.timetable!! }
-            .withBestSolutionEventConsumer { event ->
-                jobIdToJob[jobId] = Job.ofTimetable(event.solution()!!)
-            }
-            .withExceptionHandler { id, exception ->
-                jobIdToJob[id.toString()] = Job.ofException(exception)
-                log.error(exception) { "Solver failed for jobId: $id" }
-            }
-            .run()
+        try {
+            solverManager
+                .solveBuilder()
+                .withProblemId(jobId)
+                .withProblemFinder { id -> jobRegistry.get(id.toString()).timetable }
+                .withBestSolutionEventConsumer { event ->
+                    event.solution()?.let { solution -> jobRegistry.recordBest(jobId, solution) }
+                }
+                .withFinalBestSolutionEventConsumer { event ->
+                    event.solution()?.let { solution ->
+                        jobRegistry.recordFinal(jobId, solution)
+                    } ?: jobRegistry.recordFailure(
+                        jobId,
+                        IllegalStateException("Solver completed without a final solution"),
+                    )
+                }
+                .withExceptionHandler { id, exception ->
+                    val callbackJobId = id.toString()
+                    jobRegistry.recordFailure(callbackJobId, exception)
+                    log.error(exception) { "Solver failed for jobId: $callbackJobId" }
+                }
+                .run()
+        } catch (exception: Exception) {
+            jobRegistry.recordFailure(jobId, exception)
+            throw exception
+        }
 
         return jobId
     }
@@ -104,8 +108,7 @@ class TimetableController(
     ): Timetable {
         val timetable = getTimetableAndCheckForExceptions(jobId)
         val solverStatus = solverManager.getSolverStatus(jobId)
-        timetable.solverStatus = solverStatus
-        return timetable
+        return timetable.copy(solverStatus = solverStatus)
     }
 
     @GetMapping("/{jobId}/status")
@@ -118,13 +121,14 @@ class TimetableController(
     }
 
     private fun getTimetableAndCheckForExceptions(jobId: String): Timetable {
-        val job = jobIdToJob[jobId]
-            ?: throw TimetableSolverException(jobId, HttpStatus.NOT_FOUND, "No timetable found")
-
-        if (job.exception != null) {
-            throw TimetableSolverException(jobId, job.exception)
+        val snapshot = jobRegistry.get(jobId)
+        if (snapshot.state == CompletionState.FAILED) {
+            throw TimetableSolverException(
+                jobId,
+                snapshot.exception ?: IllegalStateException("Solver failed without an exception"),
+            )
         }
-        return job.timetable!!
+        return snapshot.timetable
     }
 
     @DeleteMapping("/{jobId}")

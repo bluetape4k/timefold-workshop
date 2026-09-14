@@ -49,7 +49,7 @@ assertion helpers, Exposed JDBC/R2DBC.
 - Modify: buildSrc/src/main/kotlin/Libs.kt only after the no-reference check
 - Test/verify: gradle/libs.versions.toml, root build.gradle.kts
 
-- [ ] **Step 1: 현재 source와 stale helper의 참조를 확인한다.**
+- [x] **Step 1: 현재 source와 stale helper의 참조를 확인한다.**
 
     rg -n "timefold_solver|timefoldSolver\(" buildSrc 00-shared 01-quickstarts exposed
     rg -n "timefold\.solver\.(core|jackson|spring\.boot\.starter|benchmark)" gradle build.gradle.kts 00-shared 01-quickstarts exposed
@@ -59,7 +59,7 @@ Libs.kt의 Versions.timefold_solver = "1.32.0"과 timefold_solver_* alias는
 선언부만 남는다. 참조가 발견되면 삭제하지 않고 catalog alias 이전 설계로
 돌아간다.
 
-- [ ] **Step 2: 이전 기준과 현재 graph를 저장한다.**
+- [x] **Step 2: 이전 기준과 현재 graph를 저장한다.**
 
     git show e47496a:gradle/libs.versions.toml > /tmp/issue-54-catalog-2.2.toml
     ./gradlew :school-timetabling:dependencies --configuration runtimeClasspath
@@ -71,7 +71,7 @@ Expected: core/jackson/starter는 2.6.0, benchmark insight는 No dependencies
 matching given input were found다. 명령·HEAD·configuration·exit status를
 migration 문서에 요약한다.
 
-- [ ] **Step 3: 공식 중간 버전 ledger를 작성한다.**
+- [x] **Step 3: 공식 중간 버전 ledger를 작성한다.**
 
 docs/research/2026-09-14-timefold-2.6-migration.md에 공식 release/upgrade
 문서로 다음 표를 채운다.
@@ -86,7 +86,7 @@ docs/research/2026-09-14-timefold-2.6-migration.md에 공식 release/upgrade
 최종 문서에 임시 placeholder를 남기지 않는다. 2.5/2.6만으로 2.3/2.4를
 추론하면 task를 실패시킨다.
 
-- [ ] **Step 4: 참조가 없을 때만 stale alias를 삭제한다.**
+- [x] **Step 4: 참조가 없을 때만 stale alias를 삭제한다.**
 
 삭제 대상은 Libs.kt의 Versions.timefold_solver 상수,
 timefoldSolver(module, version) 함수와 그 함수로만 만들어지는
@@ -100,7 +100,7 @@ alias와 root BOM import는 유지한다.
 Expected: buildSrc와 shared compile이 PASS한다. task 이름이 다르면
 ./gradlew tasks --all | rg compileKotlin으로 동등 task를 선택한다.
 
-- [ ] **Step 5: dependency governance를 확인한다.**
+- [x] **Step 5: dependency governance를 확인한다.**
 
     scripts/sync-managed-catalog.py --check --summary
     scripts/sync-shared-versions.py --workspace .. --check --summary
@@ -117,7 +117,7 @@ drift가 있으면 중앙 BOM을 편집하지 말고 원인과 승인 범위를 
 - Modify: 01-quickstarts/school-timetabling/src/main/kotlin/timefold/workshop/school/timetabling/solver/TimetableConstraintProvider.kt only when RED reproduces a defect
 - Reuse: existing TimetableConstraintProviderTest.kt, TimetableEnvironmentTest.kt, TimetableProvider
 
-- [ ] **Step 1: 작은 fixture와 FULL_ASSERT harness를 작성한다.**
+- [x] **Step 1: 작은 fixture와 FULL_ASSERT harness를 작성한다.**
 
     private fun smallTimetable(): Timetable {
         val monday = Timeslot("MONDAY", LocalTime.of(9, 0))
@@ -145,7 +145,7 @@ drift가 있으면 중앙 BOM을 편집하지 말고 원인과 승인 범위를 
 
 실제 Timeslot, Room, Lesson constructor를 재사용하고 ID·입력 순서를 고정한다.
 
-- [ ] **Step 2: join entry/exit RED 테스트를 추가한다.**
+- [x] **Step 2: join entry/exit RED 테스트를 추가한다.**
 
     @Test
     fun teacherJoinEntersAndExitsWithoutStaleMatch() {
@@ -167,7 +167,7 @@ consistency 주 증거는 한 번의 FULL_ASSERT solver run으로 남긴다.
 
     ./gradlew :school-timetabling:test --tests '*TimetableIncrementalScoreTest'
 
-- [ ] **Step 3: filter true/false transitions를 명시한다.**
+- [x] **Step 3: filter true/false transitions를 명시한다.**
 
 teacherTimeEfficiency와 studentGroupSubjectVariety 각각에 대해 filter가
 true인 fixture를 만든다. 관련 planning field 하나만 바꾸어 false로 만들고
@@ -175,7 +175,7 @@ true인 fixture를 만든다. 관련 planning field 하나만 바꾸어 false로
 ConstraintVerifier는 match count 보조 증거로만 사용하고 FULL_ASSERT 결과가
 증분 일관성의 주 증거다.
 
-- [ ] **Step 4: RED가 실제 defect일 때만 최소 stream fix를 한다.**
+- [x] **Step 4: RED가 실제 defect일 때만 최소 stream fix를 한다.**
 
 stale/missing/duplicate match가 재현될 때만 TimetableConstraintProvider.kt의
 해당 stream을 고치고 failing fixture를 보존한다. 재현되지 않으면 production
@@ -190,19 +190,19 @@ N/A: existing stream passed FULL_ASSERT transition을 기록한다.
 - Modify: 01-quickstarts/bed-allocation/src/main/kotlin/timefold/workshop/bed/allocation/solver/BedAllocationConstraintProvider.kt only on RED reproduction
 - Reuse: BedAllocationConstraintProviderTest.kt, BedPlan, Stay
 
-- [ ] **Step 1: same-bed join fixture를 작성한다.**
+- [x] **Step 1: same-bed join fixture를 작성한다.**
 
 두 stay를 같은 night에 고정하고 distinct bed에서 같은 bed로 이동시켜
 sameBedInSameNight join에 들어가게 한다. 다시 원래 bed로 이동해 빠지는
 경계를 검증한다. calculateSameNightCount의 실제 semantics를 사용한다.
 
-- [ ] **Step 2: unassigned/filter 경계를 작성한다.**
+- [x] **Step 2: unassigned/filter 경계를 작성한다.**
 
 forEachIncludingUnassigned constraint 하나를 bed = null → bed != null로
 검증하고, gender 또는 department filter 하나를 true → false → true로
 검증한다. patient ID, 날짜, capacity는 고정한다.
 
-- [ ] **Step 3: FULL_ASSERT와 static verifier를 실행한다.**
+- [x] **Step 3: FULL_ASSERT와 static verifier를 실행한다.**
 
     ./gradlew :bed-allocation:test --tests '*BedAllocationIncrementalScoreTest'
 
@@ -217,7 +217,7 @@ skip/disabled/static-only 결과는 PASS가 아니다.
 - Create: 01-quickstarts/school-timetabling/src/test/kotlin/timefold/workshop/school/timetabling/controller/TimetableJobRegistryTest.kt
 - Modify: 01-quickstarts/school-timetabling/src/test/kotlin/timefold/workshop/school/timetabling/controller/TimetableControllerTest.kt
 
-- [ ] **Step 1: registry RED tests를 먼저 작성한다.**
+- [x] **Step 1: registry RED tests를 먼저 작성한다.**
 
 registry API는 start(jobId, problem), recordBest(jobId, solution),
 recordFinal(jobId, solution), recordFailure(jobId, error), get(jobId)로
@@ -281,7 +281,7 @@ recordFinal(jobId, solution), recordFailure(jobId, error), get(jobId)로
 ConcurrentHashMap.compute를 사용하고, public snapshot은 mutable Entry를
 노출하지 않는다. recordBest는 PENDING일 때만 best를 갱신한다.
 
-- [ ] **Step 2: callback order와 duplicate tests를 RED로 확인한다.**
+- [x] **Step 2: callback order와 duplicate tests를 RED로 확인한다.**
 
 다음 여섯 cases를 CountDownLatch 또는 ExecutorService로 검증한다.
 
@@ -294,7 +294,7 @@ ConcurrentHashMap.compute를 사용하고, public snapshot은 mutable Entry를
 
     ./gradlew :school-timetabling:test --tests '*TimetableJobRegistryTest'
 
-- [ ] **Step 3: controller를 Timefold 2.6 final callback에 연결한다.**
+- [x] **Step 3: controller를 Timefold 2.6 final callback에 연결한다.**
 
 기존 endpoint shape를 유지하면서 builder wiring을 다음 의미로 바꾼다.
 
@@ -319,7 +319,7 @@ getTimetable, getStatus, terminateSolving의 HTTP 계약은 유지한다. reques
 payload나 비밀을 로그로 남기지 않는다. late callback이 terminal snapshot을
 덮어쓰지 않는지 registry에서 보장한다.
 
-- [ ] **Step 4: HTTP integration lifecycle을 보강한다.**
+- [x] **Step 4: HTTP integration lifecycle을 보강한다.**
 
 기존 DataSizeType solve test를 유지한다. 작은 fixture로 submit → NOT_SOLVING
 poll → final score read를 검증하고, 두 번째 job에는 DELETE terminate를

@@ -1,183 +1,54 @@
-= 학교 시간표 작성 (Kotlin, Quarkus, Maven)
+= 학교 시간표 작성 (Kotlin, Spring WebFlux, Gradle)
 
-수업을 시간대와 강의실에 배정하여 교사와 학생을 위한 더 나은 시간표를
-생성합니다.
-
-image::./school-timetabling-screenshot.png[]
-
-* <<run,애플리케이션 실행>>
-* <<package,패키징한 애플리케이션 실행>>
-* <<container,컨테이너에서 애플리케이션 실행>>
-* <<native,네이티브 실행>>
+Kotlin/Spring WebFlux로 수업을 교실과 시간대에 배정하는 Timefold Solver
+quickstart입니다. Timefold Solver `2.6.0`은 중앙
+`bluetape4k-dependencies` BOM에서 관리합니다.
 
 == 사전 요구 사항
 
-. https://sdkman.io[Sdkman]을 사용하여 JDK, Maven, Kotlin을 설치합니다.
-+
-----
-$ sdk install java
-$ sdk install maven
-$ sdk install kotlin
-----
+* Java 25 이상
+* 테스트에서 Testcontainers를 실행할 수 있는 Docker 환경
 
-[[run]]
 == 애플리케이션 실행
 
-. `timefold-quickstarts` 저장소를 clone하고 이 디렉터리로 이동합니다.
-+
+저장소 루트에서 다음 명령을 실행합니다.
+
 [source,shell]
 ----
-$ git clone https://github.com/TimefoldAI/timefold-quickstarts.git
-...
-$ cd timefold-quickstarts/kotlin/school-timetabling
+./gradlew :school-timetabling:bootRun
 ----
 
-. Maven으로 애플리케이션을 시작합니다.
-+
+기본 주소는 http://localhost:8080입니다. 데모 문제를 조회한 뒤
+`POST /timetables`로 풀이를 제출합니다.
+
+|===
+| Method | Path | 설명
+
+| `GET` | `/demo-data` | 사용 가능한 `DataSizeType` 목록
+| `GET` | `/demo-data/{dataSizeType}` | 데모 timetable 생성
+| `GET` | `/timetables` | 등록된 solver job ID 목록
+| `POST` | `/timetables` | timetable 풀이 제출, job ID 반환
+| `GET` | `/timetables/{jobId}/status` | 점수와 solver 상태 조회
+| `GET` | `/timetables/{jobId}` | 최종 timetable 조회
+| `DELETE` | `/timetables/{jobId}` | 조기 종료 후 결과 조회
+|===
+
+`TimetableJobRegistry`가 best/final/failure callback을 기록하고 terminal
+상태를 보호합니다. 증분 join/filter와 SolverManager lifecycle 회귀는 다음
+명령으로 검증합니다.
+
 [source,shell]
 ----
-$ mvn quarkus:dev
+./gradlew :school-timetabling:test --tests '*TimetableIncrementalScoreTest'
+./gradlew :school-timetabling:test --tests '*TimetableJobRegistryTest'
+./gradlew :school-timetabling:test --tests '*TimetableControllerTest'
 ----
 
-. 브라우저에서 http://localhost:8080 을 엽니다.
+`PUT /timetables/analyze`는 Community Edition에서 Enterprise 기능이므로
+테스트가 disabled/N/A입니다. Enterprise 자격 증명을 로컬 설정에 추가하지
+않아도 나머지 예제를 실행할 수 있습니다.
 
-. *Solve* 버튼을 클릭합니다.
+== 참고 자료
 
-그다음 _live coding_을 시도해 보세요.
-
-. 소스 코드 일부를 변경합니다.
-. 브라우저를 새로 고칩니다(F5).
-
-변경 사항이 즉시 적용되는 것을 확인할 수 있습니다.
-
-[[enterprise]]
-== Timefold Solver Enterprise Edition으로 애플리케이션 실행
-
-대규모 확장이 필요한 경우 상용 제품인
-https://docs.timefold.ai/timefold-solver/latest/enterprise-edition/enterprise-edition[Timefold Solver Enterprise Edition]으로 전환합니다.
-비공개 Enterprise Maven 저장소에 접근하는 데 필요한 자격 증명은
-https://timefold.ai/contact[Timefold에 문의]하여 발급받습니다.
-
-. 홈 디렉터리에 `.m2/settings.xml`을 만들고 다음 내용을 작성합니다.
-+
---
-[source,xml,options="nowrap"]
-----
-<settings>
-  ...
-  <servers>
-    <server>
-      <!-- "my_username"과 "my_password"를 Timefold 담당자로부터 받은 자격 증명으로 바꿉니다. -->
-      <id>timefold-solver-enterprise</id>
-      <username>my_username</username>
-      <password>my_password</password>
-    </server>
-  </servers>
-  ...
-</settings>
-----
-
-자세한 내용은 https://maven.apache.org/settings.html[Maven 설정 참고 문서]를
-확인합니다.
---
-
-. Maven으로 애플리케이션을 시작합니다.
-+
-[source,shell]
-----
-$ mvn clean quarkus:dev -Denterprise
-----
-
-. 브라우저에서 http://localhost:8080 을 엽니다.
-
-. *Solve* 버튼을 클릭합니다.
-
-그다음 _live coding_을 시도해 보세요.
-
-. 소스 코드 일부를 변경합니다.
-. 브라우저를 새로 고칩니다(F5).
-
-변경 사항이 즉시 적용되는 것을 확인할 수 있습니다.
-
-[[package]]
-== 패키징한 애플리케이션 실행
-
-`quarkus:dev` 모드에서 반복 작업을 마쳤다면 일반 JAR 파일로 실행할 수 있도록
-애플리케이션을 패키징합니다.
-
-. Maven으로 컴파일합니다.
-+
-[source,shell]
-----
-$ mvn package
-----
-
-. 애플리케이션을 실행합니다.
-+
-[source,shell]
-----
-$ java -jar ./target/quarkus-app/quarkus-run.jar
-----
-+
-[NOTE]
-====
-Kotlin으로 작성했지만 `java` 명령으로 실행할 수 있습니다.
-====
-+
-[NOTE]
-====
-8081 포트로 실행하려면 `-Dquarkus.http.port=8081`을 추가합니다.
-====
-
-. 브라우저에서 http://localhost:8080 을 엽니다.
-
-. *Solve* 버튼을 클릭합니다.
-
-[[container]]
-== 컨테이너에서 애플리케이션 실행
-
-. 컨테이너 이미지를 빌드합니다.
-+
-[source,shell]
-----
-$ mvn package -Dcontainer
-----
-
-컨테이너 이미지 이름은 다음과 같습니다.
-
-. 컨테이너를 실행합니다.
-+
-[source,shell]
-----
-$ docker run -p 8080:8080 --rm $USER/kotlin-school-timetabling:1.0-SNAPSHOT
-----
-
-[[native]]
-== 네이티브로 실행
-
-서버리스 배포의 시작 성능을 높이려면 애플리케이션을 네이티브 실행 파일로
-빌드합니다.
-
-. https://quarkus.io/guides/building-native-image#configuring-graalvm[GraalVM을 설치하고 `gu install`로 native-image 도구를 설치]합니다.
-
-. 네이티브로 컴파일합니다. 몇 분 정도 걸릴 수 있습니다.
-+
-[source,shell]
-----
-$ mvn package -Dnative -DskipTests
-----
-
-. 네이티브 실행 파일을 실행합니다.
-+
-[source,shell]
-----
-$ ./target/*-runner
-----
-
-. 브라우저에서 http://localhost:8080 을 엽니다.
-
-. *Solve* 버튼을 클릭합니다.
-
-== 추가 정보
-
-https://timefold.ai[timefold.ai]를 확인합니다.
+* https://github.com/TimefoldAI/timefold-solver/releases/tag/v2.6.0[Timefold Solver 2.6.0 release]
+* https://docs.timefold.ai/timefold-solver/latest/running-timefold-solver/library/spring-boot[Spring Boot integration]

@@ -1,5 +1,5 @@
 [versions]
-bluetape4k-dependencies = "2.2.0-SNAPSHOT"
+bluetape4k-dependencies = "2.1.0"
 
 # JetBrains Exposed (managed by the central dependencies BOM)
 jetbrains-exposed = "1.4.0"
